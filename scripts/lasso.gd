@@ -18,6 +18,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if state == Lasso_State.OVERHEAD:
 		# Just rotate around
+		position.x = player.position.x
+		position.z = player.position.z
 		rotation.y += ROTATION_SPEED*delta
 		pass
 	
@@ -26,14 +28,20 @@ func _physics_process(delta: float) -> void:
 		reel_in()
 
 	if state == Lasso_State.RETURNING:
+		#move self towards player
+		var direction = (player.global_position - global_position).normalized()
+		linear_velocity = direction*10
+
 		#drag caught thing
 		if(catch_target):
 			catch_target.position = position + catch_offset
 
 		#check if back at the player
 		if position.distance_to(player.position) < 2:
+			_resolve_catch(catch_target)
 			_reset_lasso()
 		if player in get_colliding_bodies():
+			_resolve_catch(catch_target)
 			_reset_lasso()
 
 func checkCatches(collisions: Array[Node3D]):
@@ -51,7 +59,11 @@ func reel_in():
 	var direction = (player.global_transform.origin - global_transform.origin).normalized()
 	add_constant_central_force(direction*10)
 
-
+func _resolve_catch(_catch_target : Node3D):
+	#run catch logic from the caught object
+	if not _catch_target or not catch_target.catch_effect:
+		return
+	_catch_target.catch_effect().call(player)
 	
 func _reset_lasso() -> void:
 	catch_target = null
