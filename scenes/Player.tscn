@@ -36,7 +36,7 @@ shape = SubResource("BoxShape3D_3li8b")
 [node name="Pivot" type="Node3D" parent="Player"]
 
 [node name="Camera3D" type="Camera3D" parent="Player/Pivot" node_paths=PackedStringArray("player")]
-transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.0635815, 0.828312, 0.556648, -0.0709524, 0.560117, -0.825369, 0, 4.11573, -3.2826)
+transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.0511366, 0.908685, 0.414337, -0.080386, 0.417279, -0.905216, 0, 3.58791, -2.76406)
 fov = 100.2
 script = ExtResource("1_mdl7e")
 player = NodePath("../..")

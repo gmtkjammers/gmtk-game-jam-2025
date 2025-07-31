@@ -2,7 +2,7 @@ extends RigidBody3D
 
 
 const ROTATION_SPEED = 4
-const THROW_SPEED = 10
+const THROW_SPEED = 5
 enum Lasso_State {OVERHEAD, THROWING, RETURNING}
 var state = Lasso_State.OVERHEAD
 var throw_angle = 0
@@ -10,6 +10,7 @@ var catch_target = null
 var catch_offset = null
 var lasso_charge : float = 0
 @export var player: CharacterBody3D
+@export var GRAVITY = 2
 
 func _ready() -> void:
 	print(get_tree().get_nodes_in_group("catchable"))
@@ -47,8 +48,8 @@ func _physics_process(delta: float) -> void:
 			_resolve_catch(catch_target)
 			_reset_lasso()
 		elif position.distance_to(player.position) < 2:
-			_reset_lasso()
 			_resolve_catch(catch_target)
+			_reset_lasso()
 
 func checkCatches(collisions: Array[Node3D]):
 	for body in collisions:
@@ -94,8 +95,8 @@ func _reset_lasso() -> void:
 
 
 func throw(power: float):
-	var direction = (player.get_child(1).global_transform.basis * Vector3(0, 0, 1)).normalized()
+	var direction = (player.get_child(1).global_transform.basis * Vector3(0, 0.5, 1)).normalized()
 	state = Lasso_State.THROWING
 	var impulse = direction * THROW_SPEED * power + direction * THROW_SPEED
-	gravity_scale = 1
+	gravity_scale = GRAVITY
 	apply_central_impulse(impulse)
