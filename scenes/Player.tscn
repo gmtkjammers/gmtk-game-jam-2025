@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=10 format=3 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://cpyj20jsrvttf" path="res://scripts/player.gd" id="1_3li8b"]
 [ext_resource type="Script" path="res://scenes/camera_3d.gd" id="1_mdl7e"]
 [ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="2_v6fml"]
 [ext_resource type="Script" uid="uid://d3252182yc7fs" path="res://scripts/lasso.gd" id="3_3li8b"]
+[ext_resource type="Script" uid="uid://dkhefg6wb6205" path="res://scripts/rope.gd" id="5_qu4a1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3li8b"]
 size = Vector3(0.487305, 0.916748, 1.18304)
@@ -40,9 +41,12 @@ fov = 100.2
 script = ExtResource("1_mdl7e")
 player = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Pivot"]
+[node name="cowbody" type="MeshInstance3D" parent="Player/Pivot"]
 transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 0, 0)
 mesh = ExtResource("2_v6fml")
+
+[node name="hand" type="Node3D" parent="Player/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774624, 0.57785)
 
 [node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719739, 1.27678)
@@ -53,9 +57,19 @@ script = ExtResource("3_3li8b")
 player = NodePath("../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lasso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.712605, 0.990132)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.362906)
 shape = SubResource("CylinderShape3D_v6fml")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Lasso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.758873, 0.990132)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.362906)
 mesh = SubResource("TorusMesh_mdl7e")
+
+[node name="knot" type="Node3D" parent="Lasso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39906)
+
+[node name="rope" type="MeshInstance3D" parent="." node_paths=PackedStringArray("startNode", "endNode")]
+script = ExtResource("5_qu4a1")
+startNode = NodePath("../Player/Pivot/hand")
+endNode = NodePath("../Lasso/knot")
+startPointOffset = Vector3(0, -1, 0)
+endPointOffset = Vector3(0, -1.5, 0)

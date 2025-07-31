@@ -17,6 +17,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+
 	if state == Lasso_State.OVERHEAD:
 		# Just rotate around
 		position.x = player.position.x
@@ -41,12 +42,13 @@ func _physics_process(delta: float) -> void:
 			catch_target.position = position + catch_offset
 
 		#check if back at the player
-		if position.distance_to(player.position) < 2:
-			_resolve_catch(catch_target)
-			_reset_lasso()
+		
 		if player in get_colliding_bodies():
 			_resolve_catch(catch_target)
 			_reset_lasso()
+		elif position.distance_to(player.position) < 2:
+			_reset_lasso()
+			_resolve_catch(catch_target)
 
 func checkCatches(collisions: Array[Node3D]):
 	for body in collisions:
@@ -82,11 +84,12 @@ func _reset_lasso() -> void:
 	catch_offset = null
 	state = Lasso_State.OVERHEAD
 	constant_force = Vector3(0, 0, 0)
-	position = Vector3(0, 1, 0)
+	position = player.position + Vector3(0,2,0)
 	rotation = Vector3.ZERO
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	gravity_scale = 0
+	lasso_charge = 0
 	state = Lasso_State.OVERHEAD
 
 
