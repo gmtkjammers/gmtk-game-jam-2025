@@ -2,13 +2,16 @@ extends CharacterBody3D
 
 @export var speed = 5
 @export var max_move_offset = 5
+@export var player_detection_range = 3
 
 var navigation: NavigationAgent3D
 
 func _ready() -> void:
 	navigation = $NavigationAgent3D
 	navigation.target_position = _get_random_position()
-	print(navigation.target_position)
+	
+	navigation.navigation_finished.connect(_on_navigation_finished)
+	
 
 
 func _physics_process(_delta: float) -> void:
@@ -43,5 +46,5 @@ func _update_target_position() -> void:
 		_update_target_position()
 
 
-func _on_navigation_agent_3d_navigation_finished() -> void:
+func _on_navigation_finished() -> void:
 	_update_target_position()
