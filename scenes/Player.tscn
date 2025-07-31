@@ -40,6 +40,7 @@ fov = 100.2
 
 [node name="Lasso" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95836, 0)
+visible = false
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 5

@@ -5,8 +5,6 @@ extends CharacterBody3D
 
 var navigation: NavigationAgent3D
 
-var targetPosition = Vector3.ZERO
-
 func _ready() -> void:
 	navigation = $NavigationAgent3D
 	navigation.target_position = _get_random_position()
@@ -20,23 +18,15 @@ func _physics_process(_delta: float) -> void:
 
 	var nextPos = navigation.get_next_path_position()
 
-	# if (nextPos == position):
-	# 	nextPos = _get_random_position()
-	# 	navigation.target_position = nextPos
-
 	var direction = (nextPos - position).normalized()
 
-	print("currentPos: ", position)
-	print("nexPos: ", nextPos)
-	print("direction: ", direction)
-
 	velocity = direction * speed
+
+	look_at(nextPos, Vector3.UP, true)
 
 	move_and_slide()
 
 func _get_random_position() -> Vector3:
-	var rng = RandomNumberGenerator.new()
-
 	var randomX = randf_range(-max_move_offset, max_move_offset)
 	var randomZ = randf_range(-max_move_offset, max_move_offset)
 
