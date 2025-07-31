@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://btdostxe2bdp2"]
+
+[ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgp6g"]
+albedo_color = Color(0.1696, 0.32, 0.22224, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
+material = SubResource("StandardMaterial3D_sgp6g")
+size = Vector3(40, 1, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgp6g"]
+size = Vector3(40.0251, 1.05359, 40.0361)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
+size = Vector3(14.1624, 1, 4.80493)
+
+[node name="Main" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625108, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0233245, 0)
+shape = SubResource("BoxShape3D_sgp6g")
+
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40055, 0)
+speed = 7
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.660002, 0.751264, 0, -0.751264, 0.660002, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, -0.0943751, 9.556)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.254855, 0.966979, 0, -0.966979, -0.254855, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09555, 0, -7.4663)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(14.0879, 0, 0, 0, 1, 0, 0, 0, 4.81552, 0, 0, 0)
+mesh = SubResource("BoxMesh_0wfyh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_sugp2")
+
+[connection signal="input_event" from="Ground" to="Player" method="_on_ground_input_event"]
