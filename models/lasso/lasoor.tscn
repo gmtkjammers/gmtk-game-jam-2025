@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvriy56m2txay"]
+
+[ext_resource type="PackedScene" uid="uid://b10rxckm7kyuf" path="res://lasso/lasso.glb" id="1_8yv6d"]
+[ext_resource type="Script" uid="uid://bnvx7d280igvb" path="res://lasso/lasoor.gd" id="1_cm6ae"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cm6ae"]
+size = Vector3(2.47021, 1.73618, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_cm6ae")
+
+[node name="lasso" parent="." instance=ExtResource("1_8yv6d")]
+
+[node name="Armature" parent="lasso" index="0"]
+transform = Transform3D(0.999484, -0.0321085, 0, 0, 0, 1, -0.0321085, -0.999484, 0, 0, 0, 0)
+
+[node name="Skeleton3D" parent="lasso/Armature" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0188372, 0)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="lasso/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -1.75834e-06, 1.22808e-11, 1.75834e-06, 1, -2.01752e-05, 2.31939e-11, 2.01752e-05, 1, -4.18723e-06, 8, 6.05121e-05)
+bone_name = "Bone.004"
+bone_idx = 4
+
+[node name="Area3D" type="Area3D" parent="lasso/Armature/Skeleton3D/BoneAttachment3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lasso/Armature/Skeleton3D/BoneAttachment3D/Area3D"]
+transform = Transform3D(1, 0, 1.69407e-21, 0, 1, 0, 1.69407e-21, 0, 1, 0.0381671, 0.964215, -5.77316e-15)
+shape = SubResource("BoxShape3D_cm6ae")
+
+[node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="lasso/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.971301, -0.237855, 0, 0.237855, 0.971301, 0, 0, 0, 1, 0, 0, 0)
+setting_count = 1
+settings/0/root_bone_name = "Bone"
+settings/0/root_bone = 0
+settings/0/end_bone_name = "Bone.004"
+settings/0/end_bone = 4
+settings/0/extend_end_bone = false
+settings/0/center_from = 0
+settings/0/individual_config = false
+settings/0/rotation_axis = 3
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 3.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.05
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
+
+[node name="AnimationPlayer" parent="lasso" index="1"]
+speed_scale = 8.0
+
+[connection signal="body_entered" from="lasso/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="lasso"]

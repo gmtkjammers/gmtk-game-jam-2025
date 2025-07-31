@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=5 format=3 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://ch55fynmt8goh" path="res://scripts/Player.gd" id="1_p0vlq"]
 [ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="2_v6fml"]
+[ext_resource type="PackedScene" uid="uid://euup0c8pgpy2" path="res://scenes/lasso.tscn" id="3_3li8b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3li8b"]
 size = Vector3(0.487305, 0.916748, 1.18304)
@@ -14,6 +15,9 @@ script = ExtResource("1_p0vlq")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 0, 0)
 mesh = ExtResource("2_v6fml")
+
+[node name="lasso" parent="Pivot" instance=ExtResource("3_3li8b")]
+transform = Transform3D(-0.21, 0, -1.83588e-08, 0, 0.21, 0, 1.83588e-08, 0, -0.21, -0.000631809, 0.655081, 0.730735)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.516724, 0.0392151)
