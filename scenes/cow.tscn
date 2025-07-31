@@ -8,7 +8,6 @@
 [node name="cow" type="StaticBody3D" groups=["catchable"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_cairq")
-size_bonus = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_jyhfs")

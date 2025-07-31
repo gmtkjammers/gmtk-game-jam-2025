@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=9 format=3 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://cpyj20jsrvttf" path="res://scripts/player.gd" id="1_3li8b"]
+[ext_resource type="Script" path="res://scenes/camera_3d.gd" id="1_mdl7e"]
 [ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="2_v6fml"]
 [ext_resource type="Script" uid="uid://d3252182yc7fs" path="res://scripts/lasso.gd" id="3_3li8b"]
 
@@ -9,15 +10,15 @@ size = Vector3(0.487305, 0.916748, 1.18304)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v6fml"]
 height = 0.1
-radius = 1.5
+radius = 0.9
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3li8b"]
 albedo_color = Color(0.996078, 0.984314, 0.0352941, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_mdl7e"]
 material = SubResource("StandardMaterial3D_3li8b")
-inner_radius = 1.529
-outer_radius = 1.662
+inner_radius = 1.0
+outer_radius = 1.1
 rings = 20
 ring_segments = 10
 
@@ -33,13 +34,15 @@ shape = SubResource("BoxShape3D_3li8b")
 
 [node name="Pivot" type="Node3D" parent="Player"]
 
+[node name="Camera3D" type="Camera3D" parent="Player/Pivot" node_paths=PackedStringArray("player")]
+transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.0635815, 0.828312, 0.556648, -0.0709524, 0.560117, -0.825369, 0, 4.11573, -3.2826)
+fov = 100.2
+script = ExtResource("1_mdl7e")
+player = NodePath("../..")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Pivot"]
 transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 0, 0)
 mesh = ExtResource("2_v6fml")
-
-[node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
-transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.0635815, 0.828312, 0.556648, -0.0709524, 0.560117, -0.825369, 0, 4.11573, -3.2826)
-fov = 100.2
 
 [node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719739, 1.27678)

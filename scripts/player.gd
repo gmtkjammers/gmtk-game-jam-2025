@@ -12,9 +12,7 @@ var speed = starting_speed*speed_adjust
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		$Pivot.rotate_y(-event.relative.x * CAM_SENSITIVITY)
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		var direction = ($Pivot.global_transform.basis * Vector3(0, 0, 1)).normalized()
-		Lasso.throw(direction)
+
 
 func increase_size(amt:float):
 	$Pivot.scale += Vector3(amt, amt, amt)
