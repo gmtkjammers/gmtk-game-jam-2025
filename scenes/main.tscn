@@ -1,7 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://btdostxe2bdp2"]
+[gd_scene load_steps=11 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://c7r6ybrvmy7hj" path="res://scenes/enemy.tscn" id="3_sugp2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
+size = Vector3(14.1624, 1, 4.80493)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_0wfyh"]
+vertices = PackedVector3Array(-19.5126, 0.324772, -19.518, -19.5126, 0.324772, 19.482, 19.4874, 0.324772, 19.482, 19.4874, 0.324772, -19.518)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+agent_height = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgp6g"]
 albedo_color = Color(0.1696, 0.32, 0.22224, 1)
@@ -13,24 +27,7 @@ size = Vector3(40, 1, 40)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgp6g"]
 size = Vector3(40.0251, 1.05359, 40.0361)
 
-[sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
-size = Vector3(14.1624, 1, 4.80493)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]
-
 [node name="Main" type="Node3D"]
-
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625108, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("BoxMesh_o5qli")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0233245, 0)
-shape = SubResource("BoxShape3D_sgp6g")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40055, 0)
@@ -40,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, -0.254855, 0.966979, 0, -0.966979, -0.254855
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09555, 0, -7.4663)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(14.0879, 0, 0, 0, 1, 0, 0, 0, 4.81552, 0, 0, 0)
@@ -57,4 +55,20 @@ shape = SubResource("BoxShape3D_jyhfs")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="cow"]
 mesh = ExtResource("2_0wfyh")
 
-[connection signal="input_event" from="Ground" to="Player" method="_on_ground_input_event"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_0wfyh")
+
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625108, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground"]
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0233245, 0)
+shape = SubResource("BoxShape3D_sgp6g")
+
+[node name="Enemy" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01737, -0.0893748, 5.35624)
+
+[connection signal="input_event" from="NavigationRegion3D/Ground" to="Player" method="_on_ground_input_event"]

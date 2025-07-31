@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7r6ybrvmy7hj"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://b75gx0e1moong" path="res://scripts/Enemy.gd" id="1_md0e3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md0e3"]
+albedo_color = Color(0.41, 0.055555, 0.0369, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7p1mj"]
+size = Vector3(1, 1.57312, 2.15869)
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_md0e3")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = ExtResource("1_7p1mj")
+surface_material_override/0 = SubResource("StandardMaterial3D_md0e3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74408, 0.131104)
+shape = SubResource("BoxShape3D_7p1mj")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
