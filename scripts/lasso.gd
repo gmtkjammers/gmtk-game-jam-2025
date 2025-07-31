@@ -6,6 +6,14 @@ const THROW_SPEED = 10
 enum Lasso_State {OVERHEAD, THROWING, RETURNING}
 var state = Lasso_State.OVERHEAD
 var throw_angle = 0
+var catch_target = null
+var catch_offset = null
+@export var player: CharacterBody3D
+
+func _ready() -> void:
+	print(get_tree().get_nodes_in_group("catchable"))
+	gravity_scale = 0
+
 
 func _physics_process(delta: float) -> void:
 	if state == Lasso_State.OVERHEAD:
@@ -13,16 +21,43 @@ func _physics_process(delta: float) -> void:
 		rotation.y += ROTATION_SPEED*delta
 		pass
 	
-	if not get_colliding_bodies().is_empty():
-		print(get_colliding_bodies()[0])
-		var timer := Timer.new()
-		add_child(timer)
-		timer.wait_time = 1.0
-		timer.one_shot = true
-		timer.start()
-		timer.timeout.connect(_on_timer_timeout)
+	if state == Lasso_State.THROWING and not get_colliding_bodies().is_empty():
+		checkCatches(get_colliding_bodies())
+		reel_in()
 
-func _on_timer_timeout() -> void:
+	if state == Lasso_State.RETURNING:
+		#drag caught thing
+		if(catch_target):
+			catch_target.position = position + catch_offset
+
+		#check if back at the player
+		if position.distance_to(player.position) < 2:
+			_reset_lasso()
+		if player in get_colliding_bodies():
+			_reset_lasso()
+
+func checkCatches(collisions: Array[Node3D]):
+	for body in collisions:
+		if body.is_in_group("catchable"):
+			print("caught!", body)
+			catch_target = body
+			catch_offset = body.position - position
+
+func reel_in():
+	print("reeling in!")
+	state = Lasso_State.RETURNING
+	#move body and lasso towards player
+	gravity_scale = 0
+	var direction = (player.global_transform.origin - global_transform.origin).normalized()
+	add_constant_central_force(direction*10)
+
+
+	
+func _reset_lasso() -> void:
+	catch_target = null
+	catch_offset = null
+	state = Lasso_State.OVERHEAD
+	constant_force = Vector3(0, 0, 0)
 	position = Vector3(0, 3, 0)
 	rotation = Vector3.ZERO
 	linear_velocity = Vector3.ZERO

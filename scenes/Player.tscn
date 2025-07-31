@@ -38,12 +38,13 @@ mesh = ExtResource("2_v6fml")
 transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.0635815, 0.828312, 0.556648, -0.0709524, 0.560117, -0.825369, 0, 4.11573, -1.63232)
 fov = 100.2
 
-[node name="Lasso" type="RigidBody3D" parent="."]
+[node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95836, 0)
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("3_3li8b")
+player = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lasso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.712605, 0.990132)
