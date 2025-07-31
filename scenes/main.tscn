@@ -33,12 +33,6 @@ shape = SubResource("BoxShape3D_sgp6g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40055, 0)
 speed = 7
 
-[node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.660002, 0.751264, 0, -0.751264, 0.660002, 0, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, -0.0943751, 9.556)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.254855, 0.966979, 0, -0.966979, -0.254855, 0, 0, 0)
 
