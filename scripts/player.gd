@@ -5,12 +5,16 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const CAM_SENSITIVITY = 0.01
 
-func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+# func _ready() -> void:
+# 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		$Pivot.rotate_y(-event.relative.x * CAM_SENSITIVITY)
+		print($Pivot.rotation)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var direction = ($Pivot.global_transform.basis * Vector3(0, 0, 1)).normalized()
+		$Lasso.throw(direction)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
