@@ -5,10 +5,15 @@ const JUMP_VELOCITY = 4.5
 const CAM_SENSITIVITY = 0.01
 @export var starting_speed = 5.0
 @export var speed_adjust = 1.0
-var speed = starting_speed*speed_adjust
-# func _ready() -> void:
-# 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+var head_point : Node3D
+@export var head_pin : Node3D
+var hats : Array[Node3D]
+var hat_scene = preload("res://scenes/cosmetics/hat.tscn")
 
+var speed = starting_speed*speed_adjust
+func _ready() -> void:
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	head_point = head_pin
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		$Pivot.rotate_y(-event.relative.x * CAM_SENSITIVITY)
@@ -39,3 +44,17 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+
+func add_hat():
+	print("adding hat, ", head_point.position)
+	var new_hat : Node3D = hat_scene.instantiate()
+	$Pivot.add_child(new_hat)
+	new_hat.global_position = head_point.global_position
+	new_hat.global_rotation = head_point.global_rotation
+	hats.append(new_hat)
+	head_point = new_hat.get_node("head_pin")
+
+func remove_hat():
+	if hats.size() > 0:
+		hats.pop_back().queue_free()
+		head_point = hats[-1].get_node("head_pin")

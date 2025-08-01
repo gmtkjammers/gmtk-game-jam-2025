@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciay26vkpl3ue"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="1_eplvg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eplvg"]
+size = Vector3(1, 1.57312, 2.15869)
+
+[node name="horse" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_eplvg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74408, 0.131104)
+shape = SubResource("BoxShape3D_eplvg")

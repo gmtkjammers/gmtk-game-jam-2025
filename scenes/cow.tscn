@@ -1,16 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://da8gt4nvm7sgu"]
+[gd_scene load_steps=5 format=3 uid="uid://b0jf3witt1wwx"]
 
-[ext_resource type="Script" uid="uid://71op5m4adnac" path="res://scripts/cow.gd" id="1_cairq"]
-[ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="1_nuh3y"]
+[ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://71op5m4adnac" path="res://scripts/cow.gd" id="1_md0e3"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md0e3"]
+albedo_color = Color(0.41, 0.055555, 0.0369, 1)
 
-[node name="cow" type="StaticBody3D" groups=["catchable"]]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-script = ExtResource("1_cairq")
+[sub_resource type="BoxShape3D" id="BoxShape3D_7p1mj"]
+size = Vector3(1, 1.57312, 2.15869)
+
+[node name="cow" type="CharacterBody3D" groups=["catchable"]]
+script = ExtResource("1_md0e3")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = ExtResource("1_7p1mj")
+surface_material_override/0 = SubResource("StandardMaterial3D_md0e3")
+
+[node name="head_pin" type="Node3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59536, 0.980773)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_jyhfs")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_nuh3y")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74408, 0.131104)
+shape = SubResource("BoxShape3D_7p1mj")

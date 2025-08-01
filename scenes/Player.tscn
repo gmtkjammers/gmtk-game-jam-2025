@@ -24,9 +24,10 @@ ring_segments = 10
 
 [node name="PlayerContainer" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso")]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin")]
 script = ExtResource("1_3li8b")
 Lasso = NodePath("../Lasso")
+head_pin = NodePath("Pivot/head_pin")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.516724, 0.0392151)
@@ -35,7 +36,7 @@ shape = SubResource("BoxShape3D_3li8b")
 [node name="Pivot" type="Node3D" parent="Player"]
 
 [node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
-transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.0511366, 0.908685, 0.414337, -0.080386, 0.417279, -0.905216, 0, 3.58791, -2.76406)
+transform = Transform3D(-0.995451, 0.0129827, 0.0943839, 0.068151, 0.789305, 0.610207, -0.0665755, 0.613864, -0.7866, 0, 4.6853, -0.890507)
 fov = 100.2
 
 [node name="cowbody" type="MeshInstance3D" parent="Player/Pivot"]
@@ -44,6 +45,12 @@ mesh = ExtResource("2_v6fml")
 
 [node name="hand" type="Node3D" parent="Player/Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774624, 0.57785)
+
+[node name="head_pin" type="Node3D" parent="Player/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.981719, 0.594484)
+
+[node name="sit_pin" type="Node3D" parent="Player/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.982287, -0.187381, 0, 0.187381, 0.982287, 0, 0.39614, -0.119756)
 
 [node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719739, 1.27678)

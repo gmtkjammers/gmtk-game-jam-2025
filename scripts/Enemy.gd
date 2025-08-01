@@ -3,15 +3,13 @@ extends CharacterBody3D
 @export var speed = 5
 @export var max_move_offset = 5
 @export var player_detection_range = 5
-@export var size_bonus = 1.2;
-func catch_effect():
-	return Catch_Logic.increase_size(size_bonus)
 
 var navigation: NavigationAgent3D
 @export var player: Node3D
-
+@export var hat = false
 signal player_entered_range
 signal player_left_range
+var hat_scene = preload("res://scenes/cosmetics/hat.tscn")
 
 var player_is_in_range: bool = false
 
@@ -21,6 +19,10 @@ func _ready() -> void:
 	navigation.target_position = _get_random_position()
 	
 	navigation.navigation_finished.connect(_on_navigation_finished)
+	if hat:
+		var new_hat : Node3D = hat_scene.instantiate()
+		new_hat.position = $Pivot/head_pin.position
+		add_child(new_hat)
 
 func _physics_process(_delta: float) -> void:
 	if navigation == null:
@@ -43,7 +45,6 @@ func _physics_process(_delta: float) -> void:
 
 # Doing this since Area3D signals completely fall apart when the 2 areas are moving
 func _check_if_player_in_range() -> void:
-	print("player", player)
 	var distance = position.distance_to(player.position)
 
 	if distance <= player_detection_range and not player_is_in_range:

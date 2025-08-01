@@ -1,4 +1,5 @@
-extends StaticBody3D
+extends "res://scripts/Enemy.gd"
+
 @export var size_bonus = 1.2;
 
 func catch_effect():

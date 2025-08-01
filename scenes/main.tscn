@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://da8gt4nvm7sgu" path="res://scenes/cow.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/enemy.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://cgnj01n1m7gmc" path="res://scenes/shooting_enemy.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" path="res://scenes/bullet.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/cow.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://c2m81kmcr0w45" path="res://scenes/bullet.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://ciay26vkpl3ue" path="res://horse.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://monkey.tscn" id="6_o6xl0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
 
@@ -29,7 +29,7 @@ size = Vector3(40.0251, 1.05359, 40.0361)
 
 [node name="Main" type="Node3D"]
 
-[node name="PlayerContainer" parent="." instance=ExtResource("1_o5qli")]
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.254855, 0.966979, 0, -0.966979, -0.254855, 0, 0, 0)
@@ -43,12 +43,6 @@ mesh = SubResource("BoxMesh_0wfyh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_sugp2")
-
-[node name="cow" parent="." instance=ExtResource("2_0wfyh")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.35089, 0, 0)
-
-[node name="cow2" parent="." instance=ExtResource("2_0wfyh")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 10.1809)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_0wfyh")
@@ -65,13 +59,22 @@ mesh = SubResource("BoxMesh_o5qli")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0233245, 0)
 shape = SubResource("BoxShape3D_sgp6g")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01737, -0.0893748, 5.35624)
-player = NodePath("../PlayerContainer")
-
-[node name="ShootingEnemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.876, -0.089, -0.5)
-player = NodePath("../PlayerContainer")
-
 [node name="Bullet" parent="." instance=ExtResource("5_tbgi4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.7904, 0.378362, 9.11124)
+
+[node name="horse" parent="." instance=ExtResource("5_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31618, 0, 9.59318)
+
+[node name="monkey" parent="." node_paths=PackedStringArray("player") groups=["catchable"] instance=ExtResource("6_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6876, 0, 7.10844)
+player = NodePath("../Player")
+hat = true
+
+[node name="cow" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.276468, 0, 11.297)
+player = NodePath("../Player")
+hat = true
+
+[node name="cow2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.1306, 0, 5.22991)
+player = NodePath("../Player")

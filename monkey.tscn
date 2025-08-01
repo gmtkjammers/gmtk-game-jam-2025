@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd4mf77wv0aj5"]
+
+[ext_resource type="Script" uid="uid://cj7nrc6gsuhq4" path="res://scripts/monkey.gd" id="1_to385"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0500s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v7a43"]
+
+[node name="monkey" type="CharacterBody3D" groups=["catchable"]]
+script = ExtResource("1_to385")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765188, 0)
+mesh = SubResource("CapsuleMesh_0500s")
+skeleton = NodePath("../..")
+
+[node name="head_pin" type="Node3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7833, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.766812, 0)
+shape = SubResource("CapsuleShape3D_v7a43")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="BulletSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28911, 1.44977)
+gizmo_extents = 0.15

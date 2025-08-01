@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 
-const ROTATION_SPEED = 4
+const ROTATION_SPEED = 5
 const THROW_SPEED = 5
 enum Lasso_State {OVERHEAD, THROWING, RETURNING}
 var state = Lasso_State.OVERHEAD
@@ -13,7 +13,6 @@ var lasso_charge : float = 0
 @export var GRAVITY = 2
 
 func _ready() -> void:
-	print(get_tree().get_nodes_in_group("catchable"))
 	gravity_scale = 0
 
 
@@ -47,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		if player in get_colliding_bodies():
 			_resolve_catch(catch_target)
 			_reset_lasso()
-		elif position.distance_to(player.position) < 2:
+		elif position.distance_to(player.position) < 1:
 			_resolve_catch(catch_target)
 			_reset_lasso()
 
@@ -70,13 +69,15 @@ func _resolve_catch(_catch_target : Node3D):
 	#run catch logic from the caught object
 	if not _catch_target or not catch_target.catch_effect:
 		return
+	if _catch_target.hat:
+		player.add_hat()
 	_catch_target.catch_effect().call(player)
 	_catch_target.queue_free()
 	
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
+	if event is InputEventMouseButton and state == Lasso_State.OVERHEAD and event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
 		throw(lasso_charge)
 
 
