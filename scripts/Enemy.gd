@@ -17,13 +17,13 @@ var hat_scene = preload("res://scenes/cosmetics/hat.tscn")
 var horse_scene = preload("res://scenes/cosmetics/horse.tscn")
 
 var player_is_in_range: bool = false
+var player_body: CharacterBody3D
 
 func _ready() -> void:
-
 	navigation = $NavigationAgent3D
 	navigation.target_position = _get_random_position()
-	
 	navigation.navigation_finished.connect(_on_navigation_finished)
+
 	if hat:
 		var new_hat : Node3D = hat_scene.instantiate()
 		new_hat.position = $Pivot/head_pin.position
@@ -36,6 +36,10 @@ func _ready() -> void:
 		#new_horse.rotation = $Pivot/seat_pin.rotation
 		add_child(new_horse)
 		navigation.path_height_offset = horse_height_offset
+
+	for node in player.get_children():
+		if node is CharacterBody3D:
+			player_body = node
 
 func _physics_process(_delta: float) -> void:
 	if navigation == null:
@@ -58,7 +62,7 @@ func _physics_process(_delta: float) -> void:
 
 # Doing this since Area3D signals completely fall apart when the 2 areas are moving
 func _check_if_player_in_range() -> void:
-	var distance = position.distance_to(player.position)
+	var distance = position.distance_to(player_body.position)
 
 	if distance <= player_detection_range and not player_is_in_range:
 		player_entered_range.emit()
