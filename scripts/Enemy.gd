@@ -8,6 +8,9 @@ var navigation: NavigationAgent3D
 @export var player: Node3D
 @export var hat = false
 @export var horse = false
+## Number to describe ground offset on the y axis for navigation, should be negative
+@export var horse_height_offset: float
+
 signal player_entered_range
 signal player_left_range
 var hat_scene = preload("res://scenes/cosmetics/hat.tscn")
@@ -32,6 +35,7 @@ func _ready() -> void:
 		new_horse.position = $Pivot/seat_pin.position
 		#new_horse.rotation = $Pivot/seat_pin.rotation
 		add_child(new_horse)
+		navigation.path_height_offset = horse_height_offset
 
 func _physics_process(_delta: float) -> void:
 	if navigation == null:
