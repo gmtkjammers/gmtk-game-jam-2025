@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7drteim1jd53"]
+
+[ext_resource type="Script" uid="uid://b0nyry12e245k" path="res://scripts/shooting_enemy.gd" id="2_2di7f"]
+[ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="2_7tkxy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tkxy"]
+albedo_color = Color(1, 0.580392, 0.262745, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7p1mj"]
+size = Vector3(1, 1.57312, 2.15869)
+
+[node name="ShootingEnemy" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_2di7f")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = ExtResource("2_7tkxy")
+surface_material_override/0 = SubResource("StandardMaterial3D_7tkxy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74408, 0.131104)
+shape = SubResource("BoxShape3D_7p1mj")
+
+[node name="BulletSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28911, 1.44977)
+gizmo_extents = 0.15
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
