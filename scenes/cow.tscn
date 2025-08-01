@@ -10,6 +10,7 @@ albedo_color = Color(0.41, 0.055555, 0.0369, 1)
 size = Vector3(1, 1.57312, 2.15869)
 
 [node name="cow" type="CharacterBody3D" groups=["catchable"]]
+collision_layer = 2
 script = ExtResource("1_md0e3")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -22,6 +23,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_md0e3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58254, 0.980773)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+navigation_layers = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74408, 0.131104)

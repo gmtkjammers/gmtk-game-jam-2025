@@ -31,6 +31,11 @@ func _shoot_and_reset_timer() -> void:
 	bullet.global_position = bulletSpawn.global_position
 	bullet.global_rotation = bulletSpawn.global_rotation
 
+	print("-------------")
+	print(name, " shooting")
+	var direction = (player_body.position - bulletSpawn.global_position).normalized()
+
+	bullet.shoot(direction)
 	shoot_timer.start(shoot_cooldown)
 
 

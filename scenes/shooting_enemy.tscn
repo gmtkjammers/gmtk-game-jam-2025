@@ -10,8 +10,8 @@ albedo_color = Color(1, 0.580392, 0.262745, 1)
 size = Vector3(1, 1.57312, 2.15869)
 
 [node name="ShootingEnemy" type="CharacterBody3D" groups=["catchable"]]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("2_2di7f")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -29,5 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28911, 1.44977)
 gizmo_extents = 0.15
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+navigation_layers = 4
 
 [node name="ShootTimer" type="Timer" parent="."]

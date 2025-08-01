@@ -51,6 +51,12 @@ move_backward={
 ]
 }
 
+[layer_names]
+
+3d_navigation/layer_1="Player"
+3d_navigation/layer_2="Enemies"
+3d_navigation/layer_3="Ground"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

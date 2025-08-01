@@ -24,11 +24,12 @@ ring_segments = 10
 
 [node name="PlayerContainer" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin", "seat_pin")]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin", "seat_pin", "hit_timer")]
 script = ExtResource("1_3li8b")
 Lasso = NodePath("../Lasso")
 head_pin = NodePath("Pivot/head_pin")
 seat_pin = NodePath("Pivot/seat_pin")
+hit_timer = NodePath("HitTimer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.516724, 0.0392151)
@@ -52,6 +53,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.981719, 0.594484)
 
 [node name="seat_pin" type="Node3D" parent="Player/Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.982287, -0.187381, 0, 0.187381, 0.982287, 0, 0.402963, -0.398085)
+
+[node name="HitTimer" type="Timer" parent="Player"]
+one_shot = true
 
 [node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719739, 1.27678)

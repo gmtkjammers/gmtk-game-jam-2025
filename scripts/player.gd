@@ -14,10 +14,19 @@ var horses: Array[Node3D]
 var hat_scene = preload("res://scenes/cosmetics/hat.tscn")
 var horse_scene = preload("res://scenes/cosmetics/horse.tscn")
 var speed = starting_speed*speed_adjust
+
+@export var hit_timer : Timer
+@export var hit_invul_time: float = 2
+
+var can_take_damage = true
+
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	head_point = head_pin
 	seat_point = seat_pin
+	add_hat()
+	add_hat()
+	hit_timer.timeout.connect(on_hit_invul_timeout)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -85,6 +94,26 @@ func add_cosmetic(scene , point, list):
 	return(new_cosmetic)
 
 func remove_hat():
-	if hats.size() > 0:
+	if hats.size() == 1:
+		hats.pop_back().queue_free()
+		head_point = head_pin
+		return
+
+	if hats.size() > 1:
 		hats.pop_back().queue_free()
 		head_point = hats[-1].get_node("head_pin")
+
+func take_damage():
+	if not can_take_damage:
+		print("bullet hit but player is invul")
+		return
+
+	print("took damage")
+	if hats.size() > 0:
+		remove_hat()
+
+	hit_timer.start(hit_invul_time)
+	can_take_damage = false
+
+func on_hit_invul_timeout() -> void:
+	can_take_damage = true
