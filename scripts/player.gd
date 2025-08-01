@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		$Pivot.rotate_y(-event.relative.x * CAM_SENSITIVITY)
+		rotate_y(-event.relative.x * CAM_SENSITIVITY)
 
 
 func increase_size(amt:float):
@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir := Input.get_vector("move_right", "move_left", "move_backward", "move_forward")
 	# var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var direction = ($Pivot.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if input_dir != Vector2.ZERO:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
