@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=9 format=3 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://cpyj20jsrvttf" path="res://scripts/player.gd" id="1_3li8b"]
-[ext_resource type="Script" path="res://scenes/camera_3d.gd" id="1_mdl7e"]
 [ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="2_v6fml"]
 [ext_resource type="Script" uid="uid://d3252182yc7fs" path="res://scripts/lasso.gd" id="3_3li8b"]
 [ext_resource type="Script" uid="uid://dkhefg6wb6205" path="res://scripts/rope.gd" id="5_qu4a1"]
@@ -35,11 +34,9 @@ shape = SubResource("BoxShape3D_3li8b")
 
 [node name="Pivot" type="Node3D" parent="Player"]
 
-[node name="Camera3D" type="Camera3D" parent="Player/Pivot" node_paths=PackedStringArray("player")]
+[node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
 transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.0511366, 0.908685, 0.414337, -0.080386, 0.417279, -0.905216, 0, 3.58791, -2.76406)
 fov = 100.2
-script = ExtResource("1_mdl7e")
-player = NodePath("../..")
 
 [node name="cowbody" type="MeshInstance3D" parent="Player/Pivot"]
 transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 0, 0)
