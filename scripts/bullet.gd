@@ -18,5 +18,4 @@ func _physics_process(delta: float) -> void:
 	position += basis.z * speed * delta
 
 func _on_timer_timeout() -> void:
-	print("taimou")
 	queue_free()

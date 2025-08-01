@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://btdostxe2bdp2"]
+[gd_scene load_steps=10 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/cow.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://c2m81kmcr0w45" path="res://scenes/bullet.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://monkey.tscn" id="6_o6xl0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
@@ -61,9 +60,6 @@ mesh = SubResource("BoxMesh_o5qli")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0233245, 0)
 shape = SubResource("BoxShape3D_sgp6g")
 
-[node name="Bullet" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.7904, 0.378362, 9.11124)
-
 [node name="cow2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.1306, 0, 5.22991)
 player = NodePath("../Player")
@@ -85,6 +81,7 @@ horse = true
 
 [node name="monkey5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51116, 0, 10.5011)
+player_detection_range = 10
 player = NodePath("../Player")
 horse = true
 
