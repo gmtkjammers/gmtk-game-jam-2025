@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwyvgk0mvchab"]
+
+[ext_resource type="Script" path="res://scripts/cow.gd" id="1_cairq"]
+[ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="1_nuh3y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]
+
+[node name="cow" type="StaticBody3D" groups=["catchable"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_cairq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jyhfs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_nuh3y")
