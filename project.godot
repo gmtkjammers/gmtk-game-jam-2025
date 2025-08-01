@@ -15,10 +15,18 @@ run/main_scene="uid://btdostxe2bdp2"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CatchLogic="*res://scripts/catch_logic.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+catchable=""
 
 [input]
 

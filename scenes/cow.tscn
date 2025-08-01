@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwyvgk0mvchab"]
+[gd_scene load_steps=4 format=3 uid="uid://da8gt4nvm7sgu"]
 
-[ext_resource type="Script" path="res://scripts/cow.gd" id="1_cairq"]
+[ext_resource type="Script" uid="uid://71op5m4adnac" path="res://scripts/cow.gd" id="1_cairq"]
 [ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="1_nuh3y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]

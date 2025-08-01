@@ -1,20 +1,21 @@
 extends CharacterBody3D
+@export var Lasso : Node3D
 
-
-const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const CAM_SENSITIVITY = 0.01
-
+@export var starting_speed = 5.0
+@export var speed_adjust = 1.0
+var speed = starting_speed*speed_adjust
 # func _ready() -> void:
 # 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		$Pivot.rotate_y(-event.relative.x * CAM_SENSITIVITY)
-		#print($Pivot.rotation)
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		var direction = ($Pivot.global_transform.basis * Vector3(0, 0, 1)).normalized()
-		$Lasso.throw(direction)
+
+
+func increase_size(amt:float):
+	$Pivot.scale += Vector3(amt, amt, amt)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -31,10 +32,10 @@ func _physics_process(delta: float) -> void:
 	# var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var direction = ($Pivot.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if input_dir != Vector2.ZERO:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
