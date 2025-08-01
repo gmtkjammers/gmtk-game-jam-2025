@@ -16,6 +16,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765188, 0)
 mesh = SubResource("CapsuleMesh_0500s")
 skeleton = NodePath("../..")
 
+[node name="seat_pin" type="Node3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.98989, 0.141834, 0, -0.141834, 0.98989, 0, -0.998343, 0)
+
 [node name="head_pin" type="Node3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7833, 0)
 

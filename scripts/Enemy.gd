@@ -7,9 +7,11 @@ extends CharacterBody3D
 var navigation: NavigationAgent3D
 @export var player: Node3D
 @export var hat = false
+@export var horse = false
 signal player_entered_range
 signal player_left_range
 var hat_scene = preload("res://scenes/cosmetics/hat.tscn")
+var horse_scene = preload("res://scenes/cosmetics/horse.tscn")
 
 var player_is_in_range: bool = false
 
@@ -23,6 +25,13 @@ func _ready() -> void:
 		var new_hat : Node3D = hat_scene.instantiate()
 		new_hat.position = $Pivot/head_pin.position
 		add_child(new_hat)
+
+	if horse:
+		position += Vector3(0, 1, 0)
+		var new_horse : Node3D = horse_scene.instantiate()
+		new_horse.position = $Pivot/seat_pin.position
+		#new_horse.rotation = $Pivot/seat_pin.rotation
+		add_child(new_horse)
 
 func _physics_process(_delta: float) -> void:
 	if navigation == null:

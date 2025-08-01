@@ -10,24 +10,25 @@ size = Vector3(0.487305, 0.916748, 1.18304)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v6fml"]
 height = 0.1
-radius = 0.9
+radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3li8b"]
 albedo_color = Color(0.996078, 0.984314, 0.0352941, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_mdl7e"]
 material = SubResource("StandardMaterial3D_3li8b")
-inner_radius = 1.0
-outer_radius = 1.1
+inner_radius = 2.0
+outer_radius = 2.1
 rings = 20
 ring_segments = 10
 
 [node name="PlayerContainer" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin")]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin", "seat_pin")]
 script = ExtResource("1_3li8b")
 Lasso = NodePath("../Lasso")
 head_pin = NodePath("Pivot/head_pin")
+seat_pin = NodePath("Pivot/seat_pin")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.516724, 0.0392151)
@@ -36,7 +37,7 @@ shape = SubResource("BoxShape3D_3li8b")
 [node name="Pivot" type="Node3D" parent="Player"]
 
 [node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
-transform = Transform3D(-0.995451, 0.0129827, 0.0943839, 0.068151, 0.789305, 0.610207, -0.0665755, 0.613864, -0.7866, 0, 4.6853, -0.890507)
+transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.076188, 0.703296, 0.706803, -0.0572036, 0.710779, -0.701086, 0, 4.80186, -1.84982)
 fov = 100.2
 
 [node name="cowbody" type="MeshInstance3D" parent="Player/Pivot"]
@@ -49,8 +50,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774624, 0.57785)
 [node name="head_pin" type="Node3D" parent="Player/Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.981719, 0.594484)
 
-[node name="sit_pin" type="Node3D" parent="Player/Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.982287, -0.187381, 0, 0.187381, 0.982287, 0, 0.39614, -0.119756)
+[node name="seat_pin" type="Node3D" parent="Player/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.982287, -0.187381, 0, 0.187381, 0.982287, 0, 0.402963, -0.398085)
 
 [node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719739, 1.27678)
@@ -61,15 +62,18 @@ script = ExtResource("3_3li8b")
 player = NodePath("../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lasso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.362906)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07804, 0.362906)
 shape = SubResource("CylinderShape3D_v6fml")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Lasso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03888, 0.362906)
 mesh = SubResource("TorusMesh_mdl7e")
+metadata/_edit_group_ = true
 
 [node name="knot" type="Node3D" parent="Lasso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39906)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905654, 1.39906)
+metadata/_edit_group_ = true
 
 [node name="rope" type="MeshInstance3D" parent="." node_paths=PackedStringArray("startNode", "endNode")]
 script = ExtResource("5_qu4a1")

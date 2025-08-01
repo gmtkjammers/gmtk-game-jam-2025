@@ -19,7 +19,7 @@ mesh = ExtResource("1_7p1mj")
 surface_material_override/0 = SubResource("StandardMaterial3D_md0e3")
 
 [node name="head_pin" type="Node3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59536, 0.980773)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58254, 0.980773)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 

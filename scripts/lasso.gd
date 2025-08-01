@@ -11,6 +11,7 @@ var catch_offset = null
 var lasso_charge : float = 0
 @export var player: CharacterBody3D
 @export var GRAVITY = 2
+@export var lasso_scale = 1.0
 
 func _ready() -> void:
 	gravity_scale = 0
@@ -71,6 +72,8 @@ func _resolve_catch(_catch_target : Node3D):
 		return
 	if _catch_target.hat:
 		player.add_hat()
+	if _catch_target.horse:
+		player.add_horse()
 	_catch_target.catch_effect().call(player)
 	_catch_target.queue_free()
 	
