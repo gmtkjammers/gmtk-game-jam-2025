@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7drteim1jd53"]
+[gd_scene load_steps=5 format=3 uid="uid://cgnj01n1m7gmc"]
 
 [ext_resource type="Script" uid="uid://b0nyry12e245k" path="res://scripts/shooting_enemy.gd" id="2_2di7f"]
 [ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="2_7tkxy"]
@@ -9,7 +9,7 @@ albedo_color = Color(1, 0.580392, 0.262745, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7p1mj"]
 size = Vector3(1, 1.57312, 2.15869)
 
-[node name="ShootingEnemy" type="CharacterBody3D"]
+[node name="ShootingEnemy" type="CharacterBody3D" groups=["catchable"]]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_2di7f")
