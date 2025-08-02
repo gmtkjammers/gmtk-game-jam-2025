@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://btdostxe2bdp2"]
+[gd_scene load_steps=11 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/cow.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://b2ebna42an117" path="res://scenes/UI/game_over_ui.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://monkey.tscn" id="6_o6xl0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
@@ -93,7 +94,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51116, 0, 10.5011)
 collision_layer = 2
 player_detection_range = 10
 player = NodePath("../Player")
-horse = true
+
+[node name="GameOverUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_jyhfs")]
+player = NodePath("../Player/Player")
 
 [editable path="Player"]
 [editable path="monkey2"]

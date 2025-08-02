@@ -19,6 +19,9 @@ var speed = starting_speed*speed_adjust
 @export var hit_invul_time: float = 2
 
 var can_take_damage = true
+var can_move = true
+
+signal player_died
 
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -29,6 +32,9 @@ func _ready() -> void:
 	hit_timer.timeout.connect(on_hit_invul_timeout)
 
 func _input(event: InputEvent) -> void:
+	if not can_move:
+		return
+
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * CAM_SENSITIVITY)
 
@@ -40,6 +46,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
+	if not can_move:
+		return
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -109,7 +118,11 @@ func take_damage():
 		print("bullet hit but player is invul")
 		return
 
-	print("took damage")
+	if hats.size() == 0:
+		player_died.emit()
+		can_take_damage = false
+		can_move = false
+
 	if hats.size() > 0:
 		remove_hat()
 
