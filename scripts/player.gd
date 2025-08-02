@@ -4,7 +4,7 @@ extends CharacterBody3D
 const INITIAL_SIZE : float = 20
 const JUMP_VELOCITY = 0.5
 const CAM_SENSITIVITY = 0.01
-@export var starting_speed = 5.0
+@export var starting_speed = 15.0
 @export var speed_adjust = 1.0
 var head_point : Node3D
 var seat_point : Node3D
@@ -20,7 +20,7 @@ var speed = starting_speed*speed_adjust
 var camera_offset : Vector3 = Vector3(0, 0, 0)
 var camera_initial_offset : Vector3 = Vector3(0, 0, 0)
 var zoom_level : float = -4
-var max_zoom : int = 12
+var max_zoom : int = 102
 var min_zoom : int = -7
 
 @export var hit_timer : Timer

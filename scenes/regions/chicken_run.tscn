@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://1wgfitj0m7dp"]
+
+[ext_resource type="PackedScene" uid="uid://27pu700u0pef" path="res://scenes/env/fence.tscn" id="1_xq6ig"]
+[ext_resource type="Texture2D" uid="uid://dxrskogp8wht3" path="res://textures/Grass_11-512x512.png" id="2_hclmn"]
+[ext_resource type="PackedScene" uid="uid://dv3c0ja1wrlan" path="res://scenes/mobs/chicken.tscn" id="3_6t4dr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xl6ht"]
+size = Vector3(50, 0.2, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kfvu"]
+albedo_texture = ExtResource("2_hclmn")
+uv1_scale = Vector3(23, 12, 23)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2tfo"]
+material = SubResource("StandardMaterial3D_1kfvu")
+size = Vector3(50, 0.2, 20)
+
+[node name="chicken run" type="Node3D"]
+
+[node name="fence5" parent="." instance=ExtResource("1_xq6ig")]
+transform = Transform3D(0.0254267, 0, 0.999677, 0, 1, 0, -0.999677, 0, 0.0254267, -10.3, 0.5, 9.4868)
+
+[node name="fence6" parent="." instance=ExtResource("1_xq6ig")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.9437, 0.5, 2.17579)
+
+[node name="fence7" parent="." instance=ExtResource("1_xq6ig")]
+transform = Transform3D(-0.0260373, 0, 0.999661, 0, 1, 0, -0.999661, 0, -0.0260373, 10.7641, 0.5, -9.91182)
+
+[node name="fence8" parent="." instance=ExtResource("1_xq6ig")]
+transform = Transform3D(-0.0260373, 0, 0.999661, 0, 1, 0, -0.999661, 0, -0.0260373, -15.6507, 0.5, -8.84497)
+
+[node name="chickenground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chickenground"]
+shape = SubResource("BoxShape3D_xl6ht")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="chickenground"]
+mesh = SubResource("BoxMesh_n2tfo")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="fence9" parent="." instance=ExtResource("1_xq6ig")]
+transform = Transform3D(0.0191973, 0, -0.999816, 0, 1, 0, 0.999816, 0, 0.0191973, -10.3673, 1, -2.87011)
+
+[node name="fence9" parent="fence9" instance=ExtResource("1_xq6ig")]
+transform = Transform3D(0.0191972, 0, -0.414924, 0, 1, 0, 0.999816, 0, 0.00796684, 1.12559, 0.0594702, 14.8782)
+
+[node name="fence10" parent="." instance=ExtResource("1_xq6ig")]
+transform = Transform3D(-0.999263, 0, -0.0383874, 0, 1, 0, 0.0383874, 0, -0.999263, 24.3895, 0.622506, -2.13204)
+
+[node name="fence11" parent="." instance=ExtResource("1_xq6ig")]
+transform = Transform3D(-0.0333296, 0, -0.999445, 0, 1, 0, 0.999445, 0, -0.0333296, 10.29, 0.633789, 10.1396)
+
+[node name="chicken" parent="." instance=ExtResource("3_6t4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8648, 0.429307, 2.57938)
+
+[node name="chicken2" parent="." instance=ExtResource("3_6t4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0652, 0.429307, -7.80449)
+
+[node name="chicken3" parent="." instance=ExtResource("3_6t4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.44, 0.429307, -6.75981)
+
+[node name="chicken4" parent="." instance=ExtResource("3_6t4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3189, 0.429305, 5.27532)
+
+[node name="chicken5" parent="." instance=ExtResource("3_6t4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1127, 0.429307, 2.04436)
+
+[node name="chicken6" parent="." instance=ExtResource("3_6t4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3973, 0.429307, 5.49348)
+
+[node name="chicken7" parent="." instance=ExtResource("3_6t4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7355, 0.429307, -2.85784)
