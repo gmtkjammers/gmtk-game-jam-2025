@@ -1,4 +1,0 @@
-extends AnimationPlayer
-
-
-autoplay = "WalkCow"

@@ -211,6 +211,7 @@ collision_layer = 2
 script = ExtResource("1_md0e3")
 
 [node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="head_pin" type="Node3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48096, 2.01906)
@@ -402,13 +403,13 @@ autoplay = "WalkCow"
 navigation_layers = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0222336, -0.999753, 0, 0.999753, -0.0222336, -0.0901995, 0.437994, -0.617003)
+transform = Transform3D(0.5, 0, 0, 0, -0.0111168, -0.499876, 0, 0.499876, -0.0111168, -0.0901995, 0.437994, -0.617003)
 shape = SubResource("CapsuleShape3D_6j430")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0491287, -0.998792, 0, 0.998792, 0.0491287, 0, 0.884297, 1.77221)
+transform = Transform3D(0.5, 0, 0, 0, 0.0245644, -0.499396, 0, 0.499396, 0.0245644, 0, 0.884297, 1.77221)
 shape = SubResource("CapsuleShape3D_hh455")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.999011, 0.0444562, 0, -0.0444562, -0.999011, -0.180399, -1.00255, -0.663754)
+transform = Transform3D(0.5, 0, 0, 0, -0.499506, 0.0222281, 0, -0.0222281, -0.499506, -0.180399, -1.00255, -0.663754)
 shape = SubResource("BoxShape3D_6j430")

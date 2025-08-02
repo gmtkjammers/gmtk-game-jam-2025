@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2gw4rfep4662"]
+
+[ext_resource type="Texture2D" uid="uid://cumo1clnkgln1" path="res://textures/Grass_05-512x512.png" id="1_hpay2"]
+[ext_resource type="PackedScene" uid="uid://27pu700u0pef" path="res://scenes/env/fence.tscn" id="2_rjla2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tefeu"]
+albedo_texture = ExtResource("1_hpay2")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o6xl0"]
+material = SubResource("StandardMaterial3D_tefeu")
+size = Vector2(30, 30)
+
+[node name="farmyard" type="Node3D"]
+
+[node name="grass" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_o6xl0")
+
+[node name="fence2" parent="." instance=ExtResource("2_rjla2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0789, 0.653162, 0)
+
+[node name="fence3" parent="." instance=ExtResource("2_rjla2")]
+transform = Transform3D(0.0254267, 0, 0.999677, 0, 1, 0, -0.999677, 0, 0.0254267, 0, 0.5, 14.863)
+
+[node name="fence4" parent="." instance=ExtResource("2_rjla2")]
+transform = Transform3D(-0.0260373, 0, 0.999661, 0, 1, 0, -0.999661, 0, -0.0260373, 0, 0.5, -14.653)
+
+[node name="fence" parent="." instance=ExtResource("2_rjla2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.671, 0.5, 0)

@@ -83,13 +83,19 @@ func _get_random_position() -> Vector3:
 
 	return Vector3(offset_x, position.y, offset_z)
 
+var counter = 0
 func _update_target_position() -> void:
 	var random_pos = _get_random_position()
 	navigation.target_position = random_pos
 	
 	if not navigation.is_target_reachable():
+		if counter > 100:
+			counter = 0
+			return
+		counter += 1
 		_update_target_position()
-
+	else:
+		counter = 0
 
 func _on_navigation_finished() -> void:
 	_update_target_position()

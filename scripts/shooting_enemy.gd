@@ -1,6 +1,6 @@
 extends "res://scripts/Enemy.gd"
 
-@export var bullet_scene = preload("res://scenes/bullet.tscn")
+@export var bullet_scene = preload("res://scenes/mobs/bullet.tscn")
 @export var shoot_cooldown: float = 2
 
 var bulletSpawn: Node3D

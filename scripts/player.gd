@@ -1,7 +1,8 @@
 extends CharacterBody3D
 @export var Lasso : Node3D
-
-const JUMP_VELOCITY = 4.5
+@export var size : float = 10
+const INITIAL_SIZE : float = 20
+const JUMP_VELOCITY = 4
 const CAM_SENSITIVITY = 0.01
 @export var starting_speed = 5.0
 @export var speed_adjust = 1.0
@@ -38,21 +39,19 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * CAM_SENSITIVITY)
 
-
-func increase_size(amt:float):
-	$Pivot.scale += Vector3(amt, amt, amt)
-
 func _physics_process(delta: float) -> void:
+	#update scale
+	scale = Vector3(1,1,1) * (size / INITIAL_SIZE)
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * 2 * delta
 
 	if not can_move:
 		return
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * (1+scale.y)
 		#add_horse()
 
 	var input_dir := Input.get_vector("move_right", "move_left", "move_backward", "move_forward")

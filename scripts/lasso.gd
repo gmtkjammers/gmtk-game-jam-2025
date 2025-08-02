@@ -15,6 +15,7 @@ var lasso_charge : float = 0
 
 func _ready() -> void:
 	gravity_scale = 0
+	_reset_lasso()
 
 
 func _physics_process(delta: float) -> void:
@@ -70,9 +71,9 @@ func _resolve_catch(_catch_target : Node3D):
 	#run catch logic from the caught object
 	if not _catch_target or not catch_target.catch_effect:
 		return
-	if _catch_target.hat:
+	if "hat" in _catch_target and _catch_target.hat:
 		player.add_hat()
-	if _catch_target.horse:
+	if "horse" in _catch_target and _catch_target.horse:
 		player.add_horse()
 	_catch_target.catch_effect().call(player)
 	_catch_target.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=20 format=4 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://cpyj20jsrvttf" path="res://scripts/player.gd" id="1_3li8b"]
 [ext_resource type="Script" uid="uid://d3252182yc7fs" path="res://scripts/lasso.gd" id="3_3li8b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://doxx1gxhbflc2" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Metallic-Mooboy_DefaultMaterial_Roughness.png" id="5_6eyey"]
 [ext_resource type="Script" uid="uid://dkhefg6wb6205" path="res://scripts/rope.gd" id="5_qu4a1"]
 [ext_resource type="Texture2D" uid="uid://to45v4abu0nv" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Normal.png" id="6_d3wef"]
+[ext_resource type="Texture2D" uid="uid://bxt67bs5je1kl" path="res://textures/Mat_Clay_Red_06-128x128.png" id="7_khinc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khinc"]
 radius = 0.921077
@@ -455,7 +456,7 @@ height = 0.1
 radius = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3li8b"]
-albedo_color = Color(0.996078, 0.984314, 0.0352941, 1)
+albedo_texture = ExtResource("7_khinc")
 
 [sub_resource type="TorusMesh" id="TorusMesh_mdl7e"]
 material = SubResource("StandardMaterial3D_3li8b")
@@ -468,6 +469,7 @@ ring_segments = 10
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin", "seat_pin", "hit_timer")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.70528, 0)
+disable_mode = 2
 script = ExtResource("1_3li8b")
 Lasso = NodePath("../Lasso")
 head_pin = NodePath("Pivot/head_pin")
@@ -481,7 +483,7 @@ shape = SubResource("CapsuleShape3D_khinc")
 [node name="Pivot" type="Node3D" parent="Player"]
 
 [node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
-transform = Transform3D(-0.995451, 0.0129827, 0.0943839, 0.0594971, 0.858457, 0.509424, -0.0744108, 0.512722, -0.855324, 0, 4.80186, -3.3427)
+transform = Transform3D(-1.9909, 0.0259654, 0.188768, 0.118994, 1.71691, 1.01885, -0.148822, 1.02544, -1.71065, 0, 7.3593, -4.44491)
 fov = 100.2
 
 [node name="hand" type="Node3D" parent="Player/Pivot"]

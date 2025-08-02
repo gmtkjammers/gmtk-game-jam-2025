@@ -8,7 +8,6 @@
 
 [node name="monkey" type="CharacterBody3D" groups=["catchable"]]
 script = ExtResource("1_to385")
-horse_height_offset = -0.5
 
 [node name="Pivot" type="Node3D" parent="."]
 

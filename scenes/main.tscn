@@ -1,29 +1,35 @@
-[gd_scene load_steps=10 format=3 uid="uid://btdostxe2bdp2"]
+[gd_scene load_steps=14 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/cow.tscn" id="3_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cap4ktjhk8qt2" path="res://textures/Mat_Clay_Tan_01-512x512.png" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/mobs/cow.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b2ebna42an117" path="res://scenes/UI/game_over_ui.tscn" id="4_jyhfs"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dv3c0ja1wrlan" path="res://scenes/mobs/chicken.tscn" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://d2gw4rfep4662" path="res://scenes/regions/farmyard.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://c7ha6erlvcb0a" path="res://scenes/env/cactus.tscn" id="6_tefeu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
 size = Vector3(14.1624, 1, 4.80493)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0wfyh"]
-vertices = PackedVector3Array(-19.5126, 0.324772, -19.518, -19.5126, 0.324772, 19.482, 19.4874, 0.324772, 19.482, 19.4874, 0.324772, -19.518)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-253.799, 0.324772, -251.566, -253.799, 0.324772, -250.566, -249.549, 0.324772, -250.566, -249.549, 0.324772, -251.566, -247.299, 0.324772, -251.566, -247.299, 0.324772, -250.566, 242.451, 0.324772, -250.566, 242.451, 0.324772, -251.566, -253.799, 0.324772, -248.566, -253.799, 0.324772, 245.934, -249.549, 0.324772, 245.934, -249.549, 0.324772, -248.566, -247.299, 0.324772, -248.566, -247.299, 0.324772, 245.934, 242.451, 0.324772, 245.934, 242.451, 0.324772, -248.566, -249.299, 0.324772, 252.684, -249.549, 0.324772, 247.934, -253.799, 0.324772, 247.934, -253.799, 0.324772, 271.434, 242.451, 0.324772, 247.934, -247.299, 0.324772, 247.934, -247.299, 0.324772, 252.434, 242.451, 0.324772, 271.434)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(22, 21, 20), PackedInt32Array(16, 22, 19), PackedInt32Array(19, 22, 23), PackedInt32Array(23, 22, 20)]
 geometry_parsed_geometry_type = 1
 agent_height = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgp6g"]
-albedo_color = Color(0.1696, 0.32, 0.22224, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbgi4"]
+albedo_texture = ExtResource("2_jyhfs")
+uv1_scale = Vector3(100, 100, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
-material = SubResource("StandardMaterial3D_sgp6g")
-size = Vector3(40, 1, 40)
+material = SubResource("StandardMaterial3D_tbgi4")
+size = Vector3(500, 1, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgp6g"]
-size = Vector3(40.0251, 1.05359, 40.0361)
+size = Vector3(497.102, 1.05359, 523.966)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tefeu"]
+size = Vector3(504.176, 6.60632, 0.875551)
 
 [node name="Main" type="Node3D"]
 
@@ -34,14 +40,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.111531, 0)
 collision_mask = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.254855, 0.966979, 0, -0.966979, -0.254855, 0, 0, 0)
+transform = Transform3D(0.49879, -0.220889, 0.838103, -0.866723, -0.127119, 0.48232, 0, -0.966979, -0.254855, 0, 7.7407, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09555, 0, -7.4663)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(14.0879, 0, 0, 0, 1, 0, 0, 0, 4.81552, 0, 0, 0)
-mesh = SubResource("BoxMesh_0wfyh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_sugp2")
@@ -61,28 +63,63 @@ layers = 7
 mesh = SubResource("BoxMesh_o5qli")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0233245, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.74821, -0.0233245, 10.0666)
 shape = SubResource("BoxShape3D_sgp6g")
 
-[node name="cow2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.1306, 0, 5.22991)
-player = NodePath("../Player")
+[node name="wall1" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2886, 3.50453, -249.553)
+shape = SubResource("BoxShape3D_tefeu")
+
+[node name="wall2" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2886, 3.50453, 246.991)
+shape = SubResource("BoxShape3D_tefeu")
+
+[node name="wall3" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -248.437, 4.31137, 0.0217896)
+shape = SubResource("BoxShape3D_tefeu")
+
+[node name="wall3" type="CollisionShape3D" parent="NavigationRegion3D/Ground/wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0986846, 4.31137, 487.055)
+shape = SubResource("BoxShape3D_tefeu")
 
 [node name="GameOverUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_jyhfs")]
 player = NodePath("../Player/Player")
 
-[node name="cow3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.1306, 0, 5.22991)
+[node name="chicken" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.269453, 0, 3.66005)
 player = NodePath("../Player")
+
+[node name="cow2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4798, 1.5572, 0)
+player = NodePath("../Player")
+
+[node name="farmyard" parent="." instance=ExtResource("5_tbgi4")]
+
+[node name="farmyard2" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7954, 0, -25.887)
 
 [node name="cow4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 16.6959, 0, 7.84486)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1503, 0.880912, -23.0013)
 player = NodePath("../Player")
-hat = true
 
 [node name="cow5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
-transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 19.4785, 0, 9.15234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5294, 0.880912, -29.038)
 player = NodePath("../Player")
-hat = true
+
+[node name="cow6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.6138, 0.880912, -19.99)
+player = NodePath("../Player")
+
+[node name="cactus" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.663, 0, 0)
+
+[node name="cactus2" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9382, 0.878362, 16.6094)
+
+[node name="cactus3" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4971, 0.878362, 5.3591)
+
+[node name="cactus4" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7732, 0.878362, 22.9271)
 
 [editable path="Player"]
