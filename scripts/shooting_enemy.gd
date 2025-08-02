@@ -20,10 +20,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 
+	var nav_pos_direction: Vector3 = (next_nav_pos - position).normalized()
+
+	# Probably should be done in a better way than this
+	if next_nav_pos != position and not player_is_in_range:
+		rotation.y = lerpf(rotation.y, atan2(nav_pos_direction.x, nav_pos_direction.z), turn_speed * delta)
+
+	velocity = nav_pos_direction * speed
+	move_and_slide()
+
 	if player_is_in_range:
 		var look_pos = Vector3(player_body.position.x, position.y, player_body.position.z)
-		var direction = (look_pos - position).normalized()
-		rotation.y = lerpf(rotation.y, atan2(direction.x, direction.z), turn_speed * delta)
+		var player_direction = (look_pos - position).normalized()
+		rotation.y = lerpf(rotation.y, atan2(player_direction.x, player_direction.z), turn_speed * delta)
 
 
 func _shoot_and_reset_timer() -> void:

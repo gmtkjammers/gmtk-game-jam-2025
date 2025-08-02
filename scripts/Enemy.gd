@@ -20,6 +20,8 @@ var horse_scene = preload("res://scenes/cosmetics/horse.tscn")
 var player_is_in_range: bool = false
 var player_body: CharacterBody3D
 
+var next_nav_pos: Vector3 = Vector3.ZERO
+
 func _ready() -> void:
 	navigation = $NavigationAgent3D
 	navigation.target_position = _get_random_position()
@@ -42,7 +44,7 @@ func _ready() -> void:
 		if node is CharacterBody3D:
 			player_body = node
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if navigation == null:
 		return
 
@@ -50,15 +52,7 @@ func _physics_process(delta: float) -> void:
 		print("nav finished")
 		return
 
-	var nextPos = navigation.get_next_path_position()
-	var direction: Vector3 = (nextPos - position).normalized()
-
-	velocity = direction * speed
-
-	# Probably should be done in a better way than this
-	if nextPos != position and not player_is_in_range:
-		rotation.y = lerpf(rotation.y, atan2(direction.x, direction.z), turn_speed * delta)
-	move_and_slide()
+	next_nav_pos = navigation.get_next_path_position()
 
 	_check_if_player_in_range()
 

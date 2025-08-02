@@ -456,6 +456,7 @@ height = 0.1
 radius = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3li8b"]
+albedo_color = Color(0.996078, 0.984314, 0.0352941, 1)
 albedo_texture = ExtResource("7_khinc")
 
 [sub_resource type="TorusMesh" id="TorusMesh_mdl7e"]
