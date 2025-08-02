@@ -2,6 +2,7 @@ extends "res://scripts/Enemy.gd"
 
 @export var bullet_scene = preload("res://scenes/mobs/bullet.tscn")
 @export var shoot_cooldown: float = 2
+@export var min_distance_to_player: float = 4
 
 var bulletSpawn: Node3D
 var shoot_timer: Timer
@@ -49,6 +50,17 @@ func _shoot_and_reset_timer() -> void:
 	shoot_timer.start(shoot_cooldown)
 
 
+func _get_position_away_from_player() -> Vector3:
+	var pos = _get_random_position()
+
+	var distance_to_player = pos.distance_squared_to(player.position)
+
+	if distance_to_player >= pow(min_distance_to_player, 2):
+		return pos
+
+	return _get_position_away_from_player()
+
+
 func _on_player_enter_range() -> void:
 	look_at(player.position, Vector3.UP, true)
 
@@ -60,3 +72,10 @@ func _on_player_leave_range() -> void:
 
 func _on_timer_timeout() -> void:
 	_shoot_and_reset_timer()
+
+func _on_navigation_finished() -> void:
+	if player_is_in_range:
+		_update_target_position(_get_position_away_from_player())
+		return
+	
+	super._on_navigation_finished()
