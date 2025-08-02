@@ -75,6 +75,7 @@ func add_horse():
 	print("new collider", new_collider)
 	new_collider.reparent(self)
 	new_collider.global_position = seat_point.global_position - Vector3(0, new_horse.scale.y, 0)
+	new_collider.rotation = Vector3.ZERO
 	print("new horse", new_horse)
 	$Pivot.add_child(new_horse)
 	new_horse.global_position = seat_point.global_position - Vector3(0, new_horse.scale.y, 0)
