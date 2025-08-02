@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @export var speed = 5
+@export var turn_speed : float = 5
 @export var max_move_offset = 5
 @export var player_detection_range = 5
 
@@ -41,7 +42,7 @@ func _ready() -> void:
 		if node is CharacterBody3D:
 			player_body = node
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if navigation == null:
 		return
 
@@ -50,12 +51,13 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	var nextPos = navigation.get_next_path_position()
-	var direction = (nextPos - position).normalized()
+	var direction: Vector3 = (nextPos - position).normalized()
 
 	velocity = direction * speed
 
-	if nextPos != position:
-		look_at(nextPos, Vector3.UP, true)
+	# Probably should be done in a better way than this
+	if nextPos != position and not player_is_in_range:
+		rotation.y = lerpf(rotation.y, atan2(direction.x, direction.z), turn_speed * delta)
 	move_and_slide()
 
 	_check_if_player_in_range()
