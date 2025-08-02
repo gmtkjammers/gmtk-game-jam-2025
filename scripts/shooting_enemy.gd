@@ -22,7 +22,8 @@ func _physics_process(delta: float) -> void:
 
 	if player_is_in_range:
 		var look_pos = Vector3(player_body.position.x, position.y, player_body.position.z)
-		look_at(look_pos, Vector3.UP, true)
+		var direction = (look_pos - position).normalized()
+		rotation.y = lerpf(rotation.y, atan2(direction.x, direction.z), turn_speed * delta)
 
 
 func _shoot_and_reset_timer() -> void:
