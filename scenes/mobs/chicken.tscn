@@ -118,6 +118,8 @@ size = Vector3(0.203583, 0.0563965, 0.344971)
 
 [node name="chicken" type="CharacterBody3D" groups=["catchable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261438, 0)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_mmdb0")
 
 [node name="Pivot" type="Node3D" parent="."]

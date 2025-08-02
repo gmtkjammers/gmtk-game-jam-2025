@@ -1,17 +1,19 @@
-[gd_scene load_steps=20 format=4 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=24 format=4 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://cpyj20jsrvttf" path="res://scripts/player.gd" id="1_3li8b"]
 [ext_resource type="Script" uid="uid://d3252182yc7fs" path="res://scripts/lasso.gd" id="3_3li8b"]
 [ext_resource type="Texture2D" uid="uid://dbisuknq4gr3j" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_BaseColor.png" id="3_khinc"]
 [ext_resource type="Texture2D" uid="uid://cpi0j74d3atx8" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Emissive.png" id="4_bruh7"]
 [ext_resource type="Texture2D" uid="uid://doxx1gxhbflc2" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Metallic-Mooboy_DefaultMaterial_Roughness.png" id="5_6eyey"]
-[ext_resource type="Script" uid="uid://dkhefg6wb6205" path="res://scripts/rope.gd" id="5_qu4a1"]
 [ext_resource type="Texture2D" uid="uid://to45v4abu0nv" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Normal.png" id="6_d3wef"]
-[ext_resource type="Texture2D" uid="uid://bxt67bs5je1kl" path="res://textures/Mat_Clay_Red_06-128x128.png" id="7_khinc"]
+[ext_resource type="Material" uid="uid://d1igneb08t2e8" path="res://textures/rope.tres" id="7_khinc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khinc"]
 radius = 0.921077
 height = 3.46141
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_khinc"]
+radius = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_od3q3"]
 resource_name = "Material.001"
@@ -451,29 +453,52 @@ _data = {
 &"Walk": SubResource("Animation_10ygx")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cw2d6"]
+radius = 0.859482
+height = 2.67824
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v6fml"]
 height = 0.1
 radius = 1.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3li8b"]
-albedo_texture = ExtResource("7_khinc")
-
 [sub_resource type="TorusMesh" id="TorusMesh_mdl7e"]
-material = SubResource("StandardMaterial3D_3li8b")
+material = ExtResource("7_khinc")
 inner_radius = 1.5
 outer_radius = 1.6
 rings = 20
 ring_segments = 10
 
+[sub_resource type="SphereMesh" id="SphereMesh_bruh7"]
+material = ExtResource("7_khinc")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cw2d6"]
+transparency = 1
+albedo_color = Color(0.160784, 0.160784, 0.447059, 0.423529)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_khinc"]
+material = SubResource("StandardMaterial3D_cw2d6")
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bruh7"]
+
 [node name="PlayerContainer" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin", "seat_pin", "hit_timer")]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, -3.27407e-08, 0.615744, 0.787946, 8.10604e-08, 0.787946, -0.615744, 0, 8.75857, -7.59984)
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin", "seat_pin", "cursor", "camera", "hit_timer")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.70528, 0)
 disable_mode = 2
+collision_layer = 8388611
+collision_mask = 8388611
 script = ExtResource("1_3li8b")
 Lasso = NodePath("../Lasso")
 head_pin = NodePath("Pivot/head_pin")
 seat_pin = NodePath("Pivot/seat_pin")
+cursor = NodePath("../cursor")
+camera = NodePath("../Camera3D")
 hit_timer = NodePath("HitTimer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -482,12 +507,15 @@ shape = SubResource("CapsuleShape3D_khinc")
 
 [node name="Pivot" type="Node3D" parent="Player"]
 
-[node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
-transform = Transform3D(-1.9909, 0.0259654, 0.188768, 0.118994, 1.71691, 1.01885, -0.148822, 1.02544, -1.71065, 0, 7.3593, -4.44491)
-fov = 100.2
-
 [node name="hand" type="Node3D" parent="Player/Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774624, 0.57785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31651, 0.446057, 0.57785)
+
+[node name="hand_body" type="StaticBody3D" parent="Player/Pivot/hand"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Pivot/hand/hand_body"]
+shape = SubResource("SphereShape3D_khinc")
 
 [node name="head_pin" type="Node3D" parent="Player/Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144673, 2.20474, -0.20104)
@@ -659,31 +687,55 @@ autoplay = "Walk"
 [node name="HitTimer" type="Timer" parent="Player"]
 one_shot = true
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.573115, 0)
+shape = SubResource("CapsuleShape3D_cw2d6")
+
 [node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.83089, 2.28846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 4194308
+collision_mask = 4194308
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("3_3li8b")
 player = NodePath("../Player")
+GRAVITY = 7
+
+[node name="ThrowTimer" type="Timer" parent="Lasso"]
+wait_time = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lasso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994107, 0.359828, 0.0665634)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994107, 0.238428, 1.37755)
 shape = SubResource("CylinderShape3D_v6fml")
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Lasso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994107, 0.277461, 0.0665634)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994107, 0.277461, 1.29153)
 mesh = SubResource("TorusMesh_mdl7e")
 metadata/_edit_group_ = true
 
 [node name="knot" type="Node3D" parent="Lasso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994107, 0.555988, 2.00216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994107, 0.22746, 2.83825)
 metadata/_edit_group_ = true
 
-[node name="rope" type="MeshInstance3D" parent="." node_paths=PackedStringArray("startNode", "endNode")]
-script = ExtResource("5_qu4a1")
-startNode = NodePath("../Player/Pivot/hand")
-endNode = NodePath("../Lasso/knot")
-startPointOffset = Vector3(0, -1, 0)
-endPointOffset = Vector3(0, -1.5, 0)
+[node name="knot_body" type="StaticBody3D" parent="Lasso/knot"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lasso/knot/knot_body"]
+shape = SubResource("SphereShape3D_khinc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lasso/knot/knot_body"]
+mesh = SubResource("SphereMesh_bruh7")
+
+[node name="cursor" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77404, 8.71583)
+collision_layer = 0
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="cursor"]
+mesh = SubResource("CylinderMesh_khinc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cursor"]
+shape = SubResource("SphereShape3D_bruh7")

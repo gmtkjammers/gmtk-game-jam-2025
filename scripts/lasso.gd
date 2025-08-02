@@ -1,8 +1,9 @@
 extends RigidBody3D
 
 
-const ROTATION_SPEED = 5
-const THROW_SPEED = 5
+const ROTATION_SPEED = 3
+const THROW_SPEED = 20
+const MAX_POWER = 2
 const LASSO_VERTICAL_OFFSET = 2
 enum Lasso_State {OVERHEAD, THROWING, RETURNING}
 var state = Lasso_State.OVERHEAD
@@ -12,12 +13,13 @@ var catch_offset = null
 var lasso_charge : float = 0
 var lasso_size : float = 1
 @export var player: CharacterBody3D
-@export var GRAVITY = 2
+@export var GRAVITY = 6
 @export var lasso_scale = 1.0
-
+@onready var throw_timer : Timer = $ThrowTimer
 func _ready() -> void:
-	gravity_scale = 0
 	_reset_lasso()
+	throw_timer.timeout.connect(_reset_lasso)
+	gravity_scale = 0
 
 
 func _physics_process(delta: float) -> void:
@@ -26,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		# Just rotate around
 		position.x = player.position.x
 		position.z = player.position.z
-		position.y = player.position.y + LASSO_VERTICAL_OFFSET
+		position.y = player.position.y + LASSO_VERTICAL_OFFSET*(player.size/10)
 		rotation.y += ROTATION_SPEED*delta*(lasso_charge + 1)
 
 		#check if mouse is being held down
@@ -69,6 +71,8 @@ func reel_in():
 	gravity_scale = 0
 	var direction = (player.global_transform.origin - global_transform.origin).normalized()
 	add_constant_central_force(direction*10)
+	#turn off collisions
+	set_collision_layer_value(3, false)
 
 func _resolve_catch(_catch_target : Node3D):
 	#run catch logic from the caught object
@@ -93,18 +97,27 @@ func _reset_lasso() -> void:
 	catch_offset = null
 	state = Lasso_State.OVERHEAD
 	constant_force = Vector3(0, 0, 0)
-	position = player.position + Vector3(0,LASSO_VERTICAL_OFFSET,0)
-	rotation = Vector3.ZERO
+	rotation = Vector3(0.1,0,0)
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	gravity_scale = 0
 	lasso_charge = 0
 	state = Lasso_State.OVERHEAD
+	set_collision_layer_value(3, false)
+	throw_timer.stop()
 
 
 func throw(power: float):
+	#check power
+	if power > MAX_POWER:
+		power = MAX_POWER
 	var direction = (player.get_child(1).global_transform.basis * Vector3(0, 0.5, 1)).normalized()
 	state = Lasso_State.THROWING
+	set_collision_layer_value(3, true)
 	var impulse = direction * THROW_SPEED * power + direction * THROW_SPEED
 	gravity_scale = GRAVITY
+	rotation = Vector3(0,0,0)
 	apply_central_impulse(impulse)
+	#start timer
+	throw_timer.start()
+	#set timeout callback

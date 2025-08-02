@@ -207,7 +207,8 @@ height = 1.76195
 [sub_resource type="BoxShape3D" id="BoxShape3D_6j430"]
 
 [node name="cow" type="CharacterBody3D" groups=["catchable"]]
-collision_layer = 2
+collision_layer = 6
+collision_mask = 5
 script = ExtResource("1_md0e3")
 
 [node name="Pivot" type="Node3D" parent="."]
