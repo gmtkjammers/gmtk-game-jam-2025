@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=10 format=3 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://cpyj20jsrvttf" path="res://scripts/player.gd" id="1_3li8b"]
 [ext_resource type="ArrayMesh" uid="uid://dpiwixetd7eaj" path="res://models/Cow_Low_Poly.obj" id="2_v6fml"]
 [ext_resource type="Script" uid="uid://d3252182yc7fs" path="res://scripts/lasso.gd" id="3_3li8b"]
+[ext_resource type="PackedScene" uid="uid://b16i4fv01n780" path="res://models/Mooboy(1).glb" id="3_qu4a1"]
 [ext_resource type="Script" uid="uid://dkhefg6wb6205" path="res://scripts/rope.gd" id="5_qu4a1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3li8b"]
@@ -38,11 +39,12 @@ shape = SubResource("BoxShape3D_3li8b")
 [node name="Pivot" type="Node3D" parent="Player"]
 
 [node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
-transform = Transform3D(-0.995451, 0.0129827, 0.0943838, 0.076188, 0.703296, 0.706803, -0.0572036, 0.710779, -0.701086, 0, 4.80186, -1.84982)
+transform = Transform3D(-1, 6.18173e-08, -6.18172e-08, 0, 0.707107, 0.707107, 8.74227e-08, 0.707107, -0.707107, 0, 4.80186, -1.84982)
 fov = 100.2
 
 [node name="cowbody" type="MeshInstance3D" parent="Player/Pivot"]
 transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, 0, 0)
+visible = false
 mesh = ExtResource("2_v6fml")
 
 [node name="hand" type="Node3D" parent="Player/Pivot"]
@@ -53,6 +55,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.981719, 0.594484)
 
 [node name="seat_pin" type="Node3D" parent="Player/Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.982287, -0.187381, 0, 0.187381, 0.982287, 0, 0.402963, -0.398085)
+
+[node name="Mooboy(1)" parent="Player/Pivot" instance=ExtResource("3_qu4a1")]
+transform = Transform3D(0.49, 0, 0, 0, 0.49, 0, 0, 0, 0.49, 0, 0.7, 0)
+
+[node name="Armature" parent="Player/Pivot/Mooboy(1)" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Player/Pivot/Mooboy(1)/Armature" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bones/0/position = Vector3(4.77676e-09, -0.57424, -0.130586)
+bones/0/rotation = Quaternion(-4.21468e-08, -0.707107, 6.28038e-16, 0.707107)
+bones/1/rotation = Quaternion(0.00855452, 0.000964603, -0.00397374, 0.999955)
+bones/2/rotation = Quaternion(-0.000152284, -7.29796e-08, 0.0818075, 0.996648)
+bones/3/rotation = Quaternion(-0.041298, 0.00176216, -0.314434, 0.948379)
+bones/5/rotation = Quaternion(0.702787, 0.627952, 0.24569, 0.226724)
+bones/6/rotation = Quaternion(-0.24569, 0.226723, -0.702787, 0.627952)
+bones/8/rotation = Quaternion(0.215711, 0.0265712, 0.0642071, 0.973982)
+bones/9/rotation = Quaternion(0.209099, 0.00542461, -0.0675478, 0.975544)
+bones/11/rotation = Quaternion(0.204594, -0.0258119, -0.0657336, 0.976296)
+bones/12/rotation = Quaternion(0.242709, -0.00627614, 0.070725, 0.967497)
+bones/13/rotation = Quaternion(-9.52484e-07, -3.58051e-08, 0.999964, 0.0085406)
+bones/14/rotation = Quaternion(-8.88837e-10, -6.20964e-08, 0.000495617, 1)
+bones/19/rotation = Quaternion(0.999964, -0.0085406, -6.58594e-07, 3.83152e-08)
+bones/20/rotation = Quaternion(4.46218e-09, 8.01506e-08, -0.000495615, 1)
+
+[node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="Player/Pivot/Mooboy(1)/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.21642e-07)
+setting_count = 1
+settings/0/root_bone_name = "Spine"
+settings/0/root_bone = 1
+settings/0/end_bone_name = "Head"
+settings/0/end_bone = 4
+settings/0/extend_end_bone = false
+settings/0/center_from = 0
+settings/0/individual_config = false
+settings/0/rotation_axis = 3
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 1.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.05
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
+
+[node name="AnimationPlayer" parent="Player/Pivot/Mooboy(1)" index="1"]
+speed_scale = 2.0
 
 [node name="HitTimer" type="Timer" parent="Player"]
 one_shot = true
@@ -85,3 +137,5 @@ startNode = NodePath("../Player/Pivot/hand")
 endNode = NodePath("../Lasso/knot")
 startPointOffset = Vector3(0, -1, 0)
 endPointOffset = Vector3(0, -1.5, 0)
+
+[editable path="Player/Pivot/Mooboy(1)"]

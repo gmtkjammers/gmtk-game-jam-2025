@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bshds8i6srgql"]
+
+[ext_resource type="PackedScene" uid="uid://b7vvbda0f8ok7" path="res://models/bush.glb" id="1_lad4k"]
+[ext_resource type="Material" uid="uid://m532nsxr2pn7" path="res://materials/m_bush.tres" id="2_ehqem"]
+
+[node name="bush" instance=ExtResource("1_lad4k")]
+
+[node name="Plane" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.1, 0)
+surface_material_override/0 = ExtResource("2_ehqem")

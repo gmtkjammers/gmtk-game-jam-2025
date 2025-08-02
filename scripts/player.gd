@@ -1,4 +1,8 @@
 extends CharacterBody3D
+
+@onready var animation_player: AnimationPlayer = $"Pivot/Mooboy(1)/AnimationPlayer"
+
+
 @export var Lasso : Node3D
 
 const JUMP_VELOCITY = 4.5
@@ -19,6 +23,13 @@ var speed = starting_speed*speed_adjust
 @export var hit_invul_time: float = 2
 
 var can_take_damage = true
+
+func _process(delta: float) -> void:
+	if velocity.length() < 2:
+		animation_player.play("Idle")
+	else:
+		animation_player.play("Walk")
+
 
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
