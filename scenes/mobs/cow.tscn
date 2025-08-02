@@ -411,5 +411,5 @@ transform = Transform3D(0.5, 0, 0, 0, 0.0245644, -0.499396, 0, 0.499396, 0.02456
 shape = SubResource("CapsuleShape3D_hh455")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, -0.499506, 0.0222281, 0, -0.0222281, -0.499506, -0.180399, -1.00255, -0.663754)
+transform = Transform3D(0.5, 0, 0, 0, -0.499506, 0.0222281, 0, -0.0222281, -0.499506, -0.180399, -0.56849, -0.663754)
 shape = SubResource("BoxShape3D_6j430")

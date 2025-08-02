@@ -29,8 +29,9 @@ func _ready() -> void:
 
 	if hat:
 		var new_hat : Node3D = hat_scene.instantiate()
-		new_hat.position = $Pivot/head_pin.position
+		#new_hat.global_position = $Pivot/head_pin.global_position
 		add_child(new_hat)
+		new_hat.global_position = $Pivot/head_pin.global_position
 
 	if horse:
 		position += Vector3(0, 1, 0)

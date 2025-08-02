@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://btdostxe2bdp2"]
+[gd_scene load_steps=17 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cap4ktjhk8qt2" path="res://textures/Mat_Clay_Tan_01-512x512.png" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://hwr38x5b8dcl" path="res://textures/sky/sky_36_2k.png" id="2_tipki"]
 [ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/mobs/cow.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b2ebna42an117" path="res://scenes/UI/game_over_ui.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dv3c0ja1wrlan" path="res://scenes/mobs/chicken.tscn" id="5_o6xl0"]
@@ -29,6 +30,18 @@ size = Vector3(497.102, 1.05359, 523.966)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tefeu"]
 size = Vector3(504.176, 6.60632, 0.875551)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tipki"]
+panorama = ExtResource("2_tipki")
+
+[sub_resource type="Sky" id="Sky_85g3d"]
+sky_material = SubResource("PanoramaSkyMaterial_tipki")
+
+[sub_resource type="Environment" id="Environment_choun"]
+background_mode = 2
+sky = SubResource("Sky_85g3d")
+ambient_light_source = 3
+ambient_light_color = Color(0.76, 0.76, 0.76, 1)
+
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
@@ -37,8 +50,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.111531, 0)
 [node name="Player" parent="Player" index="0"]
 collision_mask = 2
 
+[node name="Camera3D" parent="Player/Player/Pivot" index="0"]
+transform = Transform3D(-1.9909, 0.0259652, 0.188768, 0.118994, 1.71691, 1.01885, -0.148822, 1.02544, -1.71065, -1.55518, 7.3593, -4.70797)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.49879, -0.220889, 0.838103, -0.866723, -0.127119, 0.48232, 0, -0.966979, -0.254855, 0, 7.7407, 0)
+transform = Transform3D(0.745301, -0.16992, 0.644713, -0.666728, -0.189944, 0.72069, 1.44725e-08, -0.966979, -0.254856, 0, 7.7407, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_0wfyh")
@@ -90,6 +106,7 @@ hat = true
 [node name="cow2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4798, 1.5572, 0)
 player = NodePath("../Player")
+hat = true
 
 [node name="cow4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1503, 0.880912, -23.0013)
@@ -114,5 +131,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4971, 0.878362, 5.3591)
 
 [node name="cactus4" parent="." instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7732, 0.878362, 22.9271)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_choun")
 
 [editable path="Player"]

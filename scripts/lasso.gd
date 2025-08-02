@@ -3,12 +3,14 @@ extends RigidBody3D
 
 const ROTATION_SPEED = 5
 const THROW_SPEED = 5
+const LASSO_VERTICAL_OFFSET = 2
 enum Lasso_State {OVERHEAD, THROWING, RETURNING}
 var state = Lasso_State.OVERHEAD
 var throw_angle = 0
 var catch_target = null
 var catch_offset = null
 var lasso_charge : float = 0
+var lasso_size : float = 1
 @export var player: CharacterBody3D
 @export var GRAVITY = 2
 @export var lasso_scale = 1.0
@@ -24,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		# Just rotate around
 		position.x = player.position.x
 		position.z = player.position.z
+		position.y = player.position.y + LASSO_VERTICAL_OFFSET
 		rotation.y += ROTATION_SPEED*delta*(lasso_charge + 1)
 
 		#check if mouse is being held down
@@ -37,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	if state == Lasso_State.RETURNING:
 		#move self towards player
 		var direction = (player.global_position - global_position).normalized()
-		linear_velocity = direction*10
+		linear_velocity = direction*(10 if catch_target else 20)
 
 		#drag caught thing
 		if(catch_target):
@@ -90,7 +93,7 @@ func _reset_lasso() -> void:
 	catch_offset = null
 	state = Lasso_State.OVERHEAD
 	constant_force = Vector3(0, 0, 0)
-	position = player.position + Vector3(0,2,0)
+	position = player.position + Vector3(0,LASSO_VERTICAL_OFFSET,0)
 	rotation = Vector3.ZERO
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
