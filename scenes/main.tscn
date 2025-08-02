@@ -90,6 +90,7 @@ hat = true
 [node name="cow2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4798, 1.5572, 0)
 player = NodePath("../Player")
+hat = true
 
 [node name="cow4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1503, 0.880912, -23.0013)
