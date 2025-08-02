@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://do0o6ca3wwna4"]
+
+[ext_resource type="PackedScene" uid="uid://x4xnc85khpl5" path="res://scenes/path_3d_rope.tscn" id="1_65h00"]
+[ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="2_j1efy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1efy"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyqrn"]
+albedo_color = Color(0.25422, 5.18609e-05, 0.260755, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_65h00"]
+material = SubResource("StandardMaterial3D_uyqrn")
+size = Vector3(20, 1, 20)
+
+[sub_resource type="Curve3D" id="Curve3D_5qfyc"]
+resource_local_to_scene = true
+bake_interval = 512.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_65h00"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_j1efy"]
+
+[node name="rope_test" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 12582913
+collision_mask = 12582913
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_j1efy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_65h00")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.755247, 0.65544, 0, -0.65544, 0.755247, 0, 5.89992, 10.9797)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.47478, 0.880105, 0, -0.880105, 0.47478, 0, 11.7714, 15.6022)
+
+[node name="Path3DRope" parent="." node_paths=PackedStringArray("node_attached_to_start", "node_attached_to_end") instance=ExtResource("1_65h00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18953, 4.7099, -0.135631)
+curve = SubResource("Curve3D_5qfyc")
+fixed_start_point = false
+node_attached_to_start = NodePath("../ball2")
+node_attached_to_end = NodePath("../ball")
+
+[node name="ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05429, 4.50578, 4.58327)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ball"]
+shape = SubResource("SphereShape3D_65h00")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ball"]
+mesh = SubResource("SphereMesh_j1efy")
+
+[node name="ball2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11035, 4.76338, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ball2"]
+shape = SubResource("SphereShape3D_65h00")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ball2"]
+mesh = SubResource("SphereMesh_j1efy")
+
+[node name="PlayerContainer" parent="." instance=ExtResource("2_j1efy")]
