@@ -21,6 +21,8 @@ var player_is_in_range: bool = false
 var player_body: CharacterBody3D
 
 func _ready() -> void:
+	if not player:
+		player = get_tree().current_scene.find_child("Player")
 	navigation = $NavigationAgent3D
 	navigation.target_position = _get_random_position()
 	navigation.navigation_finished.connect(_on_navigation_finished)

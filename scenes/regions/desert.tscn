@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://en6h4aqtkqfi"]
+
+[ext_resource type="PackedScene" uid="uid://c7ha6erlvcb0a" path="res://scenes/env/cactus.tscn" id="1_8y13a"]
+[ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://scenes/mobs/monkey.tscn" id="2_5wlom"]
+
+[node name="desert" type="Node3D"]
+
+[node name="cactus" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48821, 0, 0.497769)
+
+[node name="cactus2" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01788, 0, 3.31558)
+
+[node name="cactus3" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42899, 0, -18.7138)
+
+[node name="cactus4" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7031, 0, -18.4278)
+
+[node name="cactus5" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67813, 0, 7.83787)
+
+[node name="cactus6" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0953, 0, -5.38179)
+
+[node name="cactus7" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8229, 0, -7.40793)
+
+[node name="cactus8" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05315, 0, -19.862)
+
+[node name="monkey" parent="." instance=ExtResource("2_5wlom")]
+transform = Transform3D(0.999044, -0.0437066, 0, 0.0437066, 0.999044, 0, 0, 0, 1, -8.84095, 0, -9.43636)
+hat = true
+horse = true
+
+[node name="cactus9" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1334, 0, 0.926292)
+
+[node name="cactus10" parent="." instance=ExtResource("1_8y13a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9086, 0, -14.2819)

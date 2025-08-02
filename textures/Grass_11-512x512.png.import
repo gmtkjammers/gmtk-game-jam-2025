@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3q21d4qwwdtl"
-path.s3tc="res://.godot/imported/Mat_Clay_Red_01-128x128.png-45d980f1f025019b0ef966001de93c24.s3tc.ctex"
+uid="uid://dxrskogp8wht3"
+path.s3tc="res://.godot/imported/Grass_11-512x512.png-7ab7c0456369fc72a293f93e6506deb5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/Mat_Clay_Red_01-128x128.png"
-dest_files=["res://.godot/imported/Mat_Clay_Red_01-128x128.png-45d980f1f025019b0ef966001de93c24.s3tc.ctex"]
+source_file="res://textures/Grass_11-512x512.png"
+dest_files=["res://.godot/imported/Grass_11-512x512.png-7ab7c0456369fc72a293f93e6506deb5.s3tc.ctex"]
 
 [params]
 

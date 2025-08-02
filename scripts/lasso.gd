@@ -3,7 +3,7 @@ extends RigidBody3D
 
 const ROTATION_SPEED = 3
 const THROW_SPEED = 20
-const MAX_POWER = 2
+const MAX_POWER = 1.5
 const LASSO_VERTICAL_OFFSET = 2
 enum Lasso_State {OVERHEAD, THROWING, RETURNING}
 var state = Lasso_State.OVERHEAD
