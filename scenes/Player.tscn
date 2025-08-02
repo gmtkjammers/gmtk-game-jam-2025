@@ -692,7 +692,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.573115, 0)
 shape = SubResource("CapsuleShape3D_cw2d6")
 
 [node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 4194308
 collision_mask = 4194308
 gravity_scale = 0.0
