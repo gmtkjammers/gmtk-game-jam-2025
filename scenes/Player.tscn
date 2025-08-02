@@ -488,13 +488,13 @@ height = 0.2
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, -3.27407e-08, 0.615744, 0.787946, 8.10604e-08, 0.787946, -0.615744, 0, 8.75857, -7.59984)
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("Lasso", "head_pin", "seat_pin", "cursor", "camera", "hit_timer")]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("lasso", "head_pin", "seat_pin", "cursor", "camera", "hit_timer")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.70528, 0)
 disable_mode = 2
 collision_layer = 8388611
 collision_mask = 8388611
 script = ExtResource("1_3li8b")
-Lasso = NodePath("../Lasso")
+lasso = NodePath("../Lasso")
 head_pin = NodePath("Pivot/head_pin")
 seat_pin = NodePath("Pivot/seat_pin")
 cursor = NodePath("../cursor")

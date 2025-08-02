@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://en6h4aqtkqfi"]
+[gd_scene load_steps=4 format=3 uid="uid://en6h4aqtkqfi"]
 
 [ext_resource type="PackedScene" uid="uid://c7ha6erlvcb0a" path="res://scenes/env/cactus.tscn" id="1_8y13a"]
 [ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://scenes/mobs/monkey.tscn" id="2_5wlom"]
+[ext_resource type="PackedScene" uid="uid://n1jr3cobatum" path="res://scenes/mobs/snek.tscn" id="3_5wlom"]
 
 [node name="desert" type="Node3D"]
 
@@ -39,3 +40,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1334, 0, 0.926292)
 
 [node name="cactus10" parent="." instance=ExtResource("1_8y13a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9086, 0, -14.2819)
+
+[node name="snek" parent="." instance=ExtResource("3_5wlom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22669, 0, 7.02068)
+
+[node name="snek2" parent="." instance=ExtResource("3_5wlom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8909, 0, -14.0319)
+
+[node name="snek3" parent="." instance=ExtResource("3_5wlom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7003, 0, -3.65858)
+
+[node name="snek4" parent="." instance=ExtResource("3_5wlom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04569, 0, -10.7921)

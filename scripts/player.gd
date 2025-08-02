@@ -1,5 +1,5 @@
 extends CharacterBody3D
-@export var Lasso : Node3D
+@export var lasso : Node3D
 @export var size : float = 10
 const INITIAL_SIZE : float = 20
 const JUMP_VELOCITY = 0.5
