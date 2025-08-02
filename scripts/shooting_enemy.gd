@@ -41,7 +41,7 @@ func _shoot_and_reset_timer() -> void:
 
 
 func _on_player_enter_range() -> void:
-	look_at(player.position, Vector3.UP, true)
+	look_at(player_body.position, Vector3.UP, true)
 
 	shoot_timer.start(shoot_cooldown / 2)
 

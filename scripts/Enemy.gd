@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var player_detection_range = 5
 
 var navigation: NavigationAgent3D
-@export var player: Node3D
+@export var player: CharacterBody3D
 @export var hat = false
 @export var horse = false
 ## Number to describe ground offset on the y axis for navigation, should be negative
@@ -21,8 +21,8 @@ var player_is_in_range: bool = false
 var player_body: CharacterBody3D
 
 func _ready() -> void:
-	if not player:
-		player = get_tree().current_scene.find_child("Player")
+	if player == null:
+		player_body = get_tree().current_scene.find_child("Player").find_child("PlayerBody") as CharacterBody3D
 	navigation = $NavigationAgent3D
 	navigation.target_position = _get_random_position()
 	navigation.navigation_finished.connect(_on_navigation_finished)
@@ -40,10 +40,6 @@ func _ready() -> void:
 		#new_horse.rotation = $Pivot/seat_pin.rotation
 		add_child(new_horse)
 		navigation.path_height_offset = horse_height_offset
-
-	for node in player.get_children():
-		if node is CharacterBody3D:
-			player_body = node
 
 func _physics_process(delta: float) -> void:
 	if navigation == null:
