@@ -69,13 +69,7 @@ func _physics_process(delta: float) -> void:
 
 func add_hat():
 	head_point = add_cosmetic(hat_scene, head_point, hats).get_node("head_pin")
-	# print("adding hat, ", head_point.position)
-	# var new_hat : Node3D = hat_scene.instantiate()
-	# $Pivot.add_child(new_hat)
-	# new_hat.global_position = head_point.global_position
-	# new_hat.global_rotation = head_point.global_rotation
-	# hats.append(new_hat)
-	# head_point = new_hat.get_node("head_pin")
+	
 
 func add_horse():
 	print("adding horse, ", head_point.position)

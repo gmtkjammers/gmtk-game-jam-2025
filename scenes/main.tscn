@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://btdostxe2bdp2"]
+[gd_scene load_steps=10 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/cow.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b2ebna42an117" path="res://scenes/UI/game_over_ui.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://monkey.tscn" id="6_o6xl0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
 
@@ -69,34 +68,21 @@ shape = SubResource("BoxShape3D_sgp6g")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.1306, 0, 5.22991)
 player = NodePath("../Player")
 
-[node name="monkey2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3201, 0, -3.3336)
-collision_layer = 2
-player = NodePath("../Player")
-hat = true
-horse = true
-
-[node name="monkey3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69861, 0, 11.2668)
-collision_layer = 2
-player = NodePath("../Player")
-horse = true
-
-[node name="monkey4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0516, 0, 4.55583)
-collision_layer = 2
-player = NodePath("../Player")
-hat = true
-horse = true
-
-[node name="monkey5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51116, 0, 10.5011)
-collision_layer = 2
-player_detection_range = 10
-player = NodePath("../Player")
-
 [node name="GameOverUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_jyhfs")]
 player = NodePath("../Player/Player")
 
+[node name="cow3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.1306, 0, 5.22991)
+player = NodePath("../Player")
+
+[node name="cow4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 16.6959, 0, 7.84486)
+player = NodePath("../Player")
+hat = true
+
+[node name="cow5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 19.4785, 0, 9.15234)
+player = NodePath("../Player")
+hat = true
+
 [editable path="Player"]
-[editable path="monkey2"]
