@@ -45,10 +45,6 @@ ambient_light_color = Color(0.76, 0.76, 0.76, 1)
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.111531, 0)
-
-[node name="Player" parent="Player" index="0"]
-collision_mask = 2
 
 [node name="Camera3D" parent="Player/Player/Pivot" index="0"]
 transform = Transform3D(-1.9909, 0.0259652, 0.188768, 0.118994, 1.71691, 1.01885, -0.148822, 1.02544, -1.71065, -1.55518, 7.3593, -4.70797)
@@ -62,8 +58,8 @@ navigation_layers = 4
 
 [node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625108, 0)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 12582919
+collision_mask = 12582919
 collision_priority = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground"]
