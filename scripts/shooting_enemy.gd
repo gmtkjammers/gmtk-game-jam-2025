@@ -62,7 +62,7 @@ func _get_position_away_from_player() -> Vector3:
 
 
 func _on_player_enter_range() -> void:
-	look_at(player.position, Vector3.UP, true)
+	look_at(player_body.position, Vector3.UP, true)
 
 	shoot_timer.start(shoot_cooldown / 2)
 

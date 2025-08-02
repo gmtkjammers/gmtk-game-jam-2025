@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfwck7d3g0vgk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1vsc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u824x"]
+height = 4.2794
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g1vsc"]
+height = 4.145
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iqio1"]
+height = 3.91049
+
+[node name="Node3D" type="Node3D"]
+
+[node name="rope_test" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="rope_test"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rope_test/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1969, 0)
+shape = SubResource("BoxShape3D_g1vsc")
+
+[node name="segment1" type="RigidBody3D" parent="rope_test"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rope_test/segment1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.26115)
+shape = SubResource("CapsuleShape3D_u824x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rope_test/segment1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0604, 0)
+mesh = SubResource("CapsuleMesh_g1vsc")
+
+[node name="segment2" type="RigidBody3D" parent="rope_test"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rope_test/segment2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.58043, 2.20698)
+shape = SubResource("CapsuleShape3D_iqio1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rope_test/segment2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04019, 0)
+mesh = SubResource("CapsuleMesh_g1vsc")
+
+[node name="segment3" type="RigidBody3D" parent="rope_test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.87618, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rope_test/segment3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.58043, 2.20698)
+shape = SubResource("CapsuleShape3D_iqio1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rope_test/segment3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.94035, 0)
+mesh = SubResource("CapsuleMesh_g1vsc")
+
+[node name="Camera3D" type="Camera3D" parent="rope_test"]
+transform = Transform3D(0.135227, 0.38386, -0.913436, -0.0562146, 0.923391, 0.379722, 0.989219, -4.44089e-16, 0.146446, -13.8428, 7.78034, 0)
+
+[node name="PinJoint3D" type="PinJoint3D" parent="rope_test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.97766, 0)
+node_a = NodePath("../StaticBody3D")
+node_b = NodePath("../segment1")
+
+[node name="PinJoint3D2" type="PinJoint3D" parent="rope_test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.97766, 0)
+node_a = NodePath("../segment1")
+node_b = NodePath("../segment2")
+
+[node name="PinJoint3D3" type="PinJoint3D" parent="rope_test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.97766, 0)
+node_a = NodePath("../segment2")
+node_b = NodePath("../segment3")

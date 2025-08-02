@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://cumo1clnkgln1" path="res://textures/Grass_05-512x512.png" id="1_hpay2"]
 [ext_resource type="PackedScene" uid="uid://27pu700u0pef" path="res://scenes/env/fence.tscn" id="2_rjla2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tefeu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpay2"]
 albedo_texture = ExtResource("1_hpay2")
 uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_o6xl0"]
-material = SubResource("StandardMaterial3D_tefeu")
+material = SubResource("StandardMaterial3D_hpay2")
 size = Vector2(30, 30)
 
 [node name="farmyard" type="Node3D"]
