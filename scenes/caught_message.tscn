@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://befh0fsdlj33v"]
+
+[ext_resource type="Script" uid="uid://b6pigm3kb3c82" path="res://caught_message.gd" id="1_jsoen"]
+[ext_resource type="Theme" uid="uid://c4riyqwclvtu5" path="res://new_theme.tres" id="2_fb4k6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmpkd"]
+
+[node name="CanvasLayer" type="Node3D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_jsoen")
+timer = NodePath("fade_out")
+
+[node name="panel" type="Panel" parent="."]
+offset_left = -126.72
+offset_top = -66.744
+offset_right = 127.28
+offset_bottom = 67.256
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wmpkd")
+
+[node name="label" type="RichTextLabel" parent="panel"]
+layout_mode = 0
+offset_left = 613.0
+offset_top = 284.0
+offset_right = 771.0
+offset_bottom = 504.0
+theme = ExtResource("2_fb4k6")
+theme_override_colors/font_shadow_color = Color(0.629564, 2.92394e-06, 2.40654e-07, 1)
+text = "Caught Something"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fade_out" type="Timer" parent="."]

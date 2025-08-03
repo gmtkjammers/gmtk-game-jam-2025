@@ -2,7 +2,7 @@ extends RigidBody3D
 
 
 const ROTATION_SPEED = 3
-const THROW_SPEED = 20
+const THROW_SPEED = 15
 const MAX_POWER = 1.5
 const LASSO_VERTICAL_OFFSET = 2
 enum Lasso_State {OVERHEAD, THROWING, RETURNING}
@@ -12,6 +12,7 @@ var catch_target = null
 var catch_offset = null
 var lasso_charge : float = 0
 var lasso_size : float = 1
+var catch_scene = preload("res://scenes/caught_message.tscn")
 @export var player: CharacterBody3D
 @export var GRAVITY = 6
 @export var lasso_scale = 1.0
@@ -23,7 +24,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
+	scale = Vector3(lasso_scale*lasso_size, lasso_scale*lasso_size, lasso_scale*lasso_size)
 	if state == Lasso_State.OVERHEAD:
 		# Just rotate around
 		position.x = player.position.x
@@ -34,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		#check if mouse is being held down
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			lasso_charge += delta
+			player.animation.play("Lasso")
 	
 	if state == Lasso_State.THROWING and not get_colliding_bodies().is_empty():
 		checkCatches(get_colliding_bodies())
@@ -84,6 +86,10 @@ func _resolve_catch(_catch_target : Node3D):
 		player.add_hat()
 	if "horse" in _catch_target and _catch_target.horse:
 		player.add_horse()
+	var msg = catch_scene.instantiate()
+	msg.set_camera(player.camera)
+	player.add_child(msg)
+	msg.display(_catch_target.NAME + " catch!")
 	_catch_target.catch_effect().call(player)
 	_catch_target.queue_free()
 	

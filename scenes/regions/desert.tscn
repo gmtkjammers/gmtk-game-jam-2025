@@ -1,10 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://en6h4aqtkqfi"]
+[gd_scene load_steps=7 format=3 uid="uid://en6h4aqtkqfi"]
 
 [ext_resource type="PackedScene" uid="uid://c7ha6erlvcb0a" path="res://scenes/env/cactus.tscn" id="1_8y13a"]
 [ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://scenes/mobs/monkey.tscn" id="2_5wlom"]
+[ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/mobs/cow.tscn" id="2_xdp5p"]
 [ext_resource type="PackedScene" uid="uid://n1jr3cobatum" path="res://scenes/mobs/snek.tscn" id="3_5wlom"]
 
-[node name="desert" type="Node3D"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_5wlom"]
+vertices = PackedVector3Array(-29.5949, -2.68439, -32.8878, -29.5949, -2.68439, 16.1122, 19.4051, -2.68439, 16.1122, 19.4051, -2.68439, -32.8878)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5wlom"]
+size = Vector3(50, 0.1, 50)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="desert" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_5wlom")
+navigation_layers = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="desert"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09487, -3.13439, -8.38783)
+mesh = SubResource("BoxMesh_5wlom")
 
 [node name="cactus" parent="." instance=ExtResource("1_8y13a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48821, 0, 0.497769)
@@ -20,6 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7031, 0, -18.4278)
 
 [node name="cactus5" parent="." instance=ExtResource("1_8y13a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67813, 0, 7.83787)
+
+[node name="cow" parent="." instance=ExtResource("2_xdp5p")]
 
 [node name="cactus6" parent="." instance=ExtResource("1_8y13a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0953, 0, -5.38179)
@@ -46,9 +64,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22669, 0, 7.02068)
 
 [node name="snek2" parent="." instance=ExtResource("3_5wlom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8909, 0, -14.0319)
+hat = true
 
 [node name="snek3" parent="." instance=ExtResource("3_5wlom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7003, 0, -3.65858)
 
 [node name="snek4" parent="." instance=ExtResource("3_5wlom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04569, 0, -10.7921)
+
+[node name="snek5" parent="." instance=ExtResource("3_5wlom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95047, 0, -2.4177)
+hat = true

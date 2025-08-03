@@ -11,8 +11,9 @@ extends Node3D
 @export var gun_sfx: AudioStream
 
 func _ready() -> void:
-	footsteps_player.stream = footsteps_sfx
-	footsteps_player.play()
+	if footsteps_sfx != null:
+		footsteps_player.stream = footsteps_sfx
+		footsteps_player.play()
 
 	enemy.got_caught.connect(play_caught_sfx)
 	enemy.got_caught.connect(stop_footsteps)

@@ -1,5 +1,5 @@
-extends "res://scripts/Enemy.gd"
-
+extends "res://scripts/passive_enemy.gd"
+const NAME = "snake"
 @export var size_bonus = 1.5;
 
 func catch_effect():
