@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://blusd6qaq282q" path="res://models/MonkeyWick_aPE_DefaultMaterial_Emissive.png" id="11_xa4wn"]
 [ext_resource type="Texture2D" uid="uid://l73qympweykj" path="res://models/MonkeyWick_aPE_DefaultMaterial_Metallic-aPE_DefaultMaterial_Roughness.png" id="12_rode1"]
 [ext_resource type="Texture2D" uid="uid://bu2ibu6ppx0u8" path="res://models/MonkeyWick_aPE_DefaultMaterial_Normal.png" id="13_gq61d"]
-[ext_resource type="Script" path="res://scripts/enemy_audio.gd" id="14_u2l4p"]
+[ext_resource type="Script" uid="uid://b8dxtwco4dgqw" path="res://scripts/enemy_audio.gd" id="14_u2l4p"]
 [ext_resource type="AudioStream" uid="uid://3uixdqcg156d" path="res://audio/NPC/NPC Movement/Monkey/MonkeyLocomotion/Monkey_Footstep_Loop.wav" id="15_0tu18"]
 [ext_resource type="AudioStream" uid="uid://bd3n8n0bn1yxu" path="res://audio/NPC/NPC Attack and hurt/Monkey Lasso Catch/Monkey_Lasso_Catch.wav" id="16_sn4ou"]
 [ext_resource type="AudioStream" uid="uid://cyjg45g8358sb" path="res://audio/NPC/NPC Attack and hurt/Gun/gun.wav" id="17_g0iq7"]

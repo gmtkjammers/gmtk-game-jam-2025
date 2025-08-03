@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://btdostxe2bdp2"]
+[gd_scene load_steps=16 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cap4ktjhk8qt2" path="res://textures/Mat_Clay_Tan_01-512x512.png" id="2_jyhfs"]
@@ -8,10 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://en6h4aqtkqfi" path="res://scenes/regions/desert.tscn" id="4_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b2ebna42an117" path="res://scenes/UI/game_over_ui.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://d2gw4rfep4662" path="res://scenes/regions/farmyard.tscn" id="5_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://c7ha6erlvcb0a" path="res://scenes/env/cactus.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://scenes/mobs/monkey.tscn" id="9_85g3d"]
-[ext_resource type="PackedScene" uid="uid://n1jr3cobatum" path="res://scenes/mobs/snek.tscn" id="12_eb6dy"]
-[ext_resource type="AudioStream" uid="uid://dmpdadcq5xrc5" path="res://audio/music/Mooboy_theme_2_long_loop.wav" id="14_a8y0u"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tipki"]
 panorama = ExtResource("2_tipki")
@@ -50,35 +46,6 @@ shadow_enabled = true
 [node name="GameOverUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_jyhfs")]
 player = NodePath("../Player/PlayerBody")
 
-[node name="chicken" parent="." instance=ExtResource("5_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.269453, 0, 9.9867)
-hat = true
-
-[node name="cow2" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4798, 1.5572, 0)
-hat = true
-
-[node name="cow4" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1503, 0.880912, -23.0013)
-
-[node name="cow5" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5294, 0.880912, -29.038)
-
-[node name="cow6" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.6138, 0.880912, -19.99)
-
-[node name="cactus" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.663, 0, 0)
-
-[node name="cactus2" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9382, 0.878362, 16.6094)
-
-[node name="cactus3" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4971, 0.878362, 5.3591)
-
-[node name="cactus4" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7732, 0.878362, 22.9271)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_choun")
 
@@ -101,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.816, 0.910872, -76.3878)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.1411, 0.910872, -8.27609)
 
 [node name="desert4" parent="." instance=ExtResource("4_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.6739, 0.910872, 85.6407)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8829, 0.910872, 46.7288)
 
 [node name="desert5" parent="." instance=ExtResource("4_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.68, 0.910872, -100.938)
@@ -144,11 +111,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.6817, 0, -89.3174)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68007, 7.62939e-06, -5.9741)
 
 [node name="Cattle Range2" parent="." instance=ExtResource("4_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.745, 0.576448, 123.97)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_a8y0u")
-volume_db = -25.0
-autoplay = true
-
-[editable path="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.745, 0.576448, 91.691)

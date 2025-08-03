@@ -1,4 +1,5 @@
 extends CharacterBody3D
+signal got_caught
 
 @export var speed = 3
 @export var turn_speed : float = 5
