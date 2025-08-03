@@ -49,16 +49,22 @@ func _shoot_and_reset_timer() -> void:
 	bullet.shoot(direction)
 	shoot_timer.start(shoot_cooldown)
 
-
+var count = 0
 func _get_position_away_from_player() -> Vector3:
 	var pos = _get_random_position()
 
 	var distance_to_player = pos.distance_squared_to(player_body.position)
 
 	if distance_to_player >= pow(min_distance_to_player, 2):
+		count = 0
 		return pos
 
-	return _get_position_away_from_player()
+	if count < 100:
+		count += 1
+		return _get_position_away_from_player()
+	else:
+		count = 0
+		return position
 
 
 func _on_player_enter_range() -> void:

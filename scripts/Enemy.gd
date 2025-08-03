@@ -6,7 +6,6 @@ extends CharacterBody3D
 @export var player_detection_range = 5
 
 var navigation: NavigationAgent3D
-@export var player: CharacterBody3D
 @export var hat = false
 @export var horse = false
 ## Number to describe ground offset on the y axis for navigation, should be negative
@@ -23,8 +22,11 @@ var player_body: CharacterBody3D
 var next_nav_pos: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
-	if player == null:
-		player_body = get_tree().current_scene.find_child("Player").find_child("PlayerBody") as CharacterBody3D
+
+	player_body = get_tree().current_scene.find_child("Player").find_child("PlayerBody") as CharacterBody3D
+	if (player_body == null): 
+		print(name, " got null player_body")
+
 	navigation = $NavigationAgent3D
 	navigation.target_position = _get_random_position()
 	navigation.navigation_finished.connect(_on_navigation_finished)
