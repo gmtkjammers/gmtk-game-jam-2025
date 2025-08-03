@@ -312,7 +312,7 @@ libraries = {
 autoplay = "Slither"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-navigation_layers = 4
+navigation_layers = 262144
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-0.0551245, 0.998233, -0.022199, -1.94365e-09, -0.0222328, -0.999753, -0.998479, -0.0551108, 0.00122557, -0.0690761, 0.190323, 0.0194325)

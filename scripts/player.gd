@@ -21,8 +21,8 @@ var speed = starting_speed*speed_adjust
 var camera_offset : Vector3 = Vector3(0, 0, 0)
 var camera_initial_offset : Vector3 = Vector3(0, 0, 0)
 var zoom_level : float = -4
-var max_zoom : int = 102
-var min_zoom : int = -7
+var max_zoom : int = 10
+var min_zoom : int = -6
 @onready var animation = $Pivot/AnimationPlayer
 
 @export var hit_timer : Timer

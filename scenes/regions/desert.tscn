@@ -16,7 +16,7 @@ size = Vector3(50, 0.1, 50)
 
 [node name="desert" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_5wlom")
-navigation_layers = 4
+navigation_layers = 262144
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="desert"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09487, -3.13439, -8.38783)
