@@ -53,7 +53,7 @@ func _shoot_and_reset_timer() -> void:
 func _get_position_away_from_player() -> Vector3:
 	var pos = _get_random_position()
 
-	var distance_to_player = pos.distance_squared_to(player.position)
+	var distance_to_player = pos.distance_squared_to(player_body.position)
 
 	if distance_to_player >= pow(min_distance_to_player, 2):
 		return pos
