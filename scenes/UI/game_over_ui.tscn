@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2ebna42an117"]
+[gd_scene load_steps=5 format=3 uid="uid://b2ebna42an117"]
 
+[ext_resource type="Theme" uid="uid://c4riyqwclvtu5" path="res://new_theme.tres" id="1_4xhfk"]
 [ext_resource type="Script" uid="uid://cycchmojlt4ab" path="res://scripts/UI/game_over_ui.gd" id="1_8irug"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xeeu6"]
@@ -16,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_4xhfk")
 script = ExtResource("1_8irug")
 retry_button = NodePath("CanvasLayer/RetryButton")
 
@@ -29,7 +31,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.4)
+theme = ExtResource("1_4xhfk")
+color = Color(1, 0.337255, 0.270588, 0.321569)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
@@ -43,6 +46,7 @@ offset_right = 334.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4xhfk")
 text = "YOU HAVE YEE'D YOUR LAST HAW"
 label_settings = SubResource("LabelSettings_xeeu6")
 horizontal_alignment = 1
@@ -61,6 +65,7 @@ offset_bottom = -0.288025
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(92, 32)
+theme = ExtResource("1_4xhfk")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/RetryButton"]
 layout_mode = 1
@@ -70,6 +75,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_4xhfk")
 
 [node name="Label" type="Label" parent="CanvasLayer/RetryButton"]
 layout_mode = 1
@@ -84,6 +90,7 @@ offset_right = 24.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4xhfk")
 text = "RETRY"
 label_settings = SubResource("LabelSettings_8irug")
 horizontal_alignment = 1

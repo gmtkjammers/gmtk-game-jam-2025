@@ -14,6 +14,7 @@ var hats : Array[Node3D]
 var horses: Array[Node3D]
 var hat_scene = preload("res://scenes/cosmetics/hat.tscn")
 var horse_scene = preload("res://scenes/cosmetics/horse.tscn")
+var message_scene = preload("res://scenes/caught_message.tscn")
 var speed = starting_speed*speed_adjust
 @export var cursor: Node3D
 @export var camera : Camera3D
@@ -106,7 +107,10 @@ func _physics_process(delta: float) -> void:
 
 func add_hat():
 	head_point = add_cosmetic(hat_scene, head_point, hats).get_node("head_pin")
-
+	var msg = message_scene.instantiate()
+	msg.set_camera(camera)
+	add_child(msg)
+	msg.display("Check out my hat!")
 
 func add_horse():
 	print("adding horse, ", head_point.position)
@@ -124,6 +128,11 @@ func add_horse():
 	seat_point = new_horse.get_node("seat_pin")
 	horses.append(new_horse)
 	speed += 5
+	var msg = message_scene.instantiate()
+	msg.set_camera(camera)
+	add_child(msg)
+	msg.display("Horse!")
+
 
 
 func add_cosmetic(scene , point, list):
@@ -160,6 +169,10 @@ func take_damage():
 
 	if hats.size() > 0:
 		remove_hat()
+		var msg = message_scene.instantiate()
+		msg.set_camera(camera)
+		add_child(msg)
+		msg.display("Yeowch!")
 
 	hit_timer.start(hit_invul_time)
 	can_take_damage = false
