@@ -33,6 +33,8 @@ signal player_died
 signal took_damage
 signal got_horse
 signal got_hat
+signal increased_size
+signal increased_lasso
 
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

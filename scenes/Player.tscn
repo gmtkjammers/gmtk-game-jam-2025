@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=30 format=4 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://cpyj20jsrvttf" path="res://scripts/player.gd" id="1_3li8b"]
 [ext_resource type="Script" uid="uid://d3252182yc7fs" path="res://scripts/lasso.gd" id="3_3li8b"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dehfrptf3l1ml" path="res://audio/Player/PowerUps/Power_up_hat_gain.wav" id="7_o4126"]
 [ext_resource type="AudioStream" uid="uid://coxtu6lfm2xq5" path="res://audio/Player/PowerUps/Power_up_hat_loss.wav" id="8_lkdrv"]
 [ext_resource type="AudioStream" uid="uid://kvkakssoh7g7" path="res://audio/Player/PowerUps/Power_up_faster_horse.wav" id="9_p7iby"]
+[ext_resource type="AudioStream" uid="uid://bcg8hvtfwtraf" path="res://audio/Player/PowerUps/Power_up_cow.wav" id="10_lkdrv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khinc"]
 radius = 0.921077
@@ -704,6 +705,8 @@ player_body = NodePath("..")
 get_hat_sfx = ExtResource("7_o4126")
 lose_hat_sfx = ExtResource("8_lkdrv")
 get_horse_sfx = ExtResource("9_p7iby")
+increase_size_sfx = ExtResource("10_lkdrv")
+increase_lasso_sfx = ExtResource("7_o4126")
 
 [node name="FootstepsPlayer" type="AudioStreamPlayer3D" parent="PlayerBody/AudioPlayers"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.28164, 0)
