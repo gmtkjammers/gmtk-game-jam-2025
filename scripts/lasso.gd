@@ -61,6 +61,8 @@ func checkCatches(collisions: Array[Node3D]):
 	for body in collisions:
 		if body.is_in_group("catchable"):
 			print("caught!", body)
+			if(body.has_signal("got_caught")):
+				body.got_caught.emit()
 			catch_target = body
 			catch_offset = body.position - position
 
