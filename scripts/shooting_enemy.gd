@@ -7,6 +7,8 @@ extends "res://scripts/Enemy.gd"
 var bulletSpawn: Node3D
 var shoot_timer: Timer
 
+signal has_shot
+
 func _ready() -> void:
 	super._ready()
 
@@ -48,6 +50,7 @@ func _shoot_and_reset_timer() -> void:
 
 	bullet.shoot(direction)
 	shoot_timer.start(shoot_cooldown)
+	has_shot.emit()
 
 var count = 0
 func _get_position_away_from_player() -> Vector3:

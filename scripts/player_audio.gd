@@ -18,7 +18,8 @@ func _ready() -> void:
 	player_body.increased_lasso.connect(play_increase_lasso_sfx)
 
 func _physics_process(_delta: float) -> void:
-	if player_body.velocity != Vector3.ZERO and not footsteps_player.playing:
+	var is_player_moving = player_body.velocity.x != 0 or player_body.velocity.z != 0
+	if is_player_moving and not footsteps_player.playing:
 		footsteps_player.play()
 		return
 	

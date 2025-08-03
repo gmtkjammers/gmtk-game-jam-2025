@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd4mf77wv0aj5"]
+[gd_scene load_steps=8 format=3 uid="uid://dd4mf77wv0aj5"]
 
 [ext_resource type="Script" uid="uid://cj7nrc6gsuhq4" path="res://scripts/monkey.gd" id="1_to385"]
+[ext_resource type="Script" uid="uid://b8dxtwco4dgqw" path="res://scripts/enemy_audio.gd" id="2_c87ky"]
+[ext_resource type="AudioStream" uid="uid://bd3n8n0bn1yxu" path="res://audio/NPC/NPC Attack and hurt/Monkey Lasso Catch/Monkey_Lasso_Catch.wav" id="3_1bwrm"]
+[ext_resource type="AudioStream" uid="uid://3uixdqcg156d" path="res://audio/NPC/NPC Movement/Monkey/MonkeyLocomotion/Monkey_Footstep_Loop.wav" id="3_6lbvm"]
+[ext_resource type="AudioStream" uid="uid://ckfyc0vhdoebw" path="res://audio/NPC/NPC Attack and hurt/Gun/gun_3.wav" id="5_6lbvm"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0500s"]
 
@@ -37,3 +41,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.922693, 0.611699)
 gizmo_extents = 0.15
 
 [node name="ShootTimer" type="Timer" parent="."]
+
+[node name="AudioPlayers" type="Node3D" parent="." node_paths=PackedStringArray("enemy", "footsteps_player", "fx_player")]
+script = ExtResource("2_c87ky")
+enemy = NodePath("..")
+footsteps_player = NodePath("FootstepsPlayer")
+fx_player = NodePath("EffectsPlayer")
+footsteps_sfx = ExtResource("3_6lbvm")
+caught_sfx = ExtResource("3_1bwrm")
+gun_sfx = ExtResource("5_6lbvm")
+
+[node name="FootstepsPlayer" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+volume_db = -17.0
+
+[node name="EffectsPlayer" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+volume_db = -16.0

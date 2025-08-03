@@ -13,6 +13,8 @@ var navigation: NavigationAgent3D
 
 signal player_entered_range
 signal player_left_range
+signal got_caught
+
 var hat_scene = preload("res://scenes/cosmetics/hat.tscn")
 var horse_scene = preload("res://scenes/cosmetics/horse.tscn")
 
