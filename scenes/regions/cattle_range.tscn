@@ -58,35 +58,27 @@ mesh = SubResource("PlaneMesh_q8rd6")
 
 [node name="cow" parent="." instance=ExtResource("4_p75ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0979, 0, 0)
-collision_layer = 6
 
 [node name="cow2" parent="." instance=ExtResource("4_p75ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.94039)
-collision_layer = 6
 
 [node name="cow3" parent="." instance=ExtResource("4_p75ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1488, 0, 0)
-collision_layer = 6
 
 [node name="cow4" parent="." instance=ExtResource("4_p75ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.76853, 0, 7.21638)
-collision_layer = 6
 
 [node name="cow5" parent="." instance=ExtResource("4_p75ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.626, 0, 0)
-collision_layer = 6
 
 [node name="cow6" parent="." instance=ExtResource("4_p75ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5281, 0, -7.94039)
-collision_layer = 6
 
 [node name="cow7" parent="." instance=ExtResource("4_p75ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62078, 0, 0)
-collision_layer = 6
 
 [node name="cow8" parent="." instance=ExtResource("4_p75ru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2966, 0, 7.21638)
-collision_layer = 6
 
 [node name="monkey" parent="." instance=ExtResource("5_181qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2199, 0, -15.1359)

@@ -37,12 +37,12 @@ size = Vector3(504.176, 6.60632, 0.875551)
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tipki"]
 panorama = ExtResource("2_tipki")
 
-[sub_resource type="Sky" id="Sky_85g3d"]
+[sub_resource type="Sky" id="Sky_eb6dy"]
 sky_material = SubResource("PanoramaSkyMaterial_tipki")
 
 [sub_resource type="Environment" id="Environment_choun"]
 background_mode = 2
-sky = SubResource("Sky_85g3d")
+sky = SubResource("Sky_eb6dy")
 ambient_light_source = 3
 ambient_light_color = Color(0.76, 0.76, 0.76, 1)
 
