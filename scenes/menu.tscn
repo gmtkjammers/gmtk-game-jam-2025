@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://b4cems4tm2fao"]
+[gd_scene load_steps=39 format=4 uid="uid://b4cems4tm2fao"]
 
 [ext_resource type="Script" uid="uid://bcjqxodpjkufy" path="res://scenes/menu.gd" id="1_70i5f"]
 [ext_resource type="Theme" uid="uid://c4riyqwclvtu5" path="res://new_theme.tres" id="1_ufwb2"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://bwyow37d11n2q" path="res://scenes/menu_lasso.gd" id="7_i6lef"]
 [ext_resource type="Texture2D" uid="uid://hwr38x5b8dcl" path="res://textures/sky/sky_36_2k.png" id="8_13sgg"]
 [ext_resource type="Material" uid="uid://d1igneb08t2e8" path="res://textures/rope.tres" id="9_7jp70"]
+[ext_resource type="AudioStream" uid="uid://dbhmmdda7fx1" path="res://audio/music/MooBoy_theme.wav" id="15_mxgkd"]
+[ext_resource type="AudioStream" uid="uid://skyrq00xndli" path="res://audio/UI/Click (1).wav" id="16_g6gyw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i42df"]
 
@@ -835,5 +837,13 @@ transform = Transform3D(0.989566, 0, 0.14408, 0, 1, 0, -0.14408, 0, 0.989566, -7
 
 [node name="fence3" parent="." instance=ExtResource("1_yqeox")]
 transform = Transform3D(-0.534647, 0, -0.845075, 0, 1, 0, 0.845075, 0, -0.534647, 12.5998, 2.39813, -12.7266)
+
+[node name="MenuMusic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_mxgkd")
+volume_db = -5.0
+autoplay = true
+
+[node name="MenuSfx" type="AudioStreamPlayer3D" parent="MenuMusic"]
+stream = ExtResource("16_g6gyw")
 
 [connection signal="pressed" from="CanvasLayer/menu/Panel/start" to="CanvasLayer/menu" method="_on_start_pressed"]
