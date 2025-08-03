@@ -10,7 +10,6 @@ script = ExtResource("1_jsoen")
 timer = NodePath("fade_out")
 
 [node name="panel" type="Panel" parent="."]
-anchors_preset = -1
 offset_left = -126.72
 offset_top = -66.744
 offset_right = 127.28
@@ -21,10 +20,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_wmpkd")
 
 [node name="label" type="RichTextLabel" parent="panel"]
 layout_mode = 0
-offset_left = 131.0
-offset_top = 68.0
-offset_right = 1283.0
-offset_bottom = 430.0
+offset_left = 613.0
+offset_top = 284.0
+offset_right = 771.0
+offset_bottom = 504.0
 theme = ExtResource("2_fb4k6")
 theme_override_colors/font_shadow_color = Color(0.629564, 2.92394e-06, 2.40654e-07, 1)
 text = "Caught Something"

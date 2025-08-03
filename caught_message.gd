@@ -24,4 +24,4 @@ var throwheight = 10
 
 func _process(delta):
 	$panel.position = Vector2(count*randoffset-10,(count-throwheight)**2-throwheight**2)
-	count+=0.7
+	count+=0.4

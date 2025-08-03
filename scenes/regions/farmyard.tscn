@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2gw4rfep4662"]
+[gd_scene load_steps=6 format=3 uid="uid://d2gw4rfep4662"]
 
 [ext_resource type="Texture2D" uid="uid://cumo1clnkgln1" path="res://textures/Grass_05-512x512.png" id="1_hpay2"]
 [ext_resource type="PackedScene" uid="uid://27pu700u0pef" path="res://scenes/env/fence.tscn" id="2_rjla2"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hpay2"]
+vertices = PackedVector3Array(14.6882, 1.5, -15.0434, 5.4382, 1.5, -15.0434, 14.4382, 1.5, -14.5434, 14.1882, 1.5, 15.2066, 14.6882, 1.5, 15.2066, -14.5618, 0.5, -13.0434, -14.5618, 0.5, 13.4566, 13.4382, 0.5, 13.9566, 13.4382, 0.5, -13.7934)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 4), PackedInt32Array(4, 2, 0), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 8)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpay2"]
 albedo_texture = ExtResource("1_hpay2")
@@ -11,7 +15,9 @@ uv1_scale = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_hpay2")
 size = Vector2(30, 30)
 
-[node name="farmyard" type="Node3D"]
+[node name="farmyard" type="NavigationRegion3D"]
+navigation_mesh = SubResource("NavigationMesh_hpay2")
+navigation_layers = 4
 
 [node name="grass" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_o6xl0")
