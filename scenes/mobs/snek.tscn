@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=4 uid="uid://n1jr3cobatum"]
+[gd_scene load_steps=15 format=4 uid="uid://n1jr3cobatum"]
 
 [ext_resource type="Script" uid="uid://brn6icvclska7" path="res://scripts/snek.gd" id="1_y5nmw"]
 [ext_resource type="Texture2D" uid="uid://nvii4exbegwh" path="res://models/snek_snek_DefaultMaterial_BaseColor.png" id="2_8kuo5"]
 [ext_resource type="Texture2D" uid="uid://bfchdaal8ikej" path="res://models/snek_snek_DefaultMaterial_Emissive.png" id="3_r3yau"]
 [ext_resource type="Texture2D" uid="uid://djp670v3242de" path="res://models/snek_snek_DefaultMaterial_Metallic-snek_DefaultMaterial_Roughness.png" id="4_a81gq"]
 [ext_resource type="Texture2D" uid="uid://b804cfrms7up1" path="res://models/snek_snek_DefaultMaterial_Normal.png" id="5_tjohc"]
+[ext_resource type="Script" uid="uid://b8dxtwco4dgqw" path="res://scripts/enemy_audio.gd" id="6_a81gq"]
+[ext_resource type="AudioStream" uid="uid://hideolqtllee" path="res://audio/NPC/NPC Movement/Snake/snake 2.wav" id="7_tjohc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok0vo"]
 resource_name = "Material.001"
@@ -319,3 +321,16 @@ shape = SubResource("CylinderShape3D_bf5y0")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.00182675, -0.0553007, -0.998468, 0.0550942, -0.996948, 0.0553173, -0.998479, -0.0551108, 0.00122557, 0.670938, 0.493535, 0.0229387)
 shape = SubResource("CapsuleShape3D_8kuo5")
+
+[node name="AudioPlayers" type="Node3D" parent="." node_paths=PackedStringArray("enemy", "footsteps_player", "fx_player")]
+script = ExtResource("6_a81gq")
+enemy = NodePath("..")
+footsteps_player = NodePath("Footsteps")
+fx_player = NodePath("Efects")
+caught_sfx = ExtResource("7_tjohc")
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+volume_db = -15.0
+
+[node name="Efects" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+volume_db = -10.0

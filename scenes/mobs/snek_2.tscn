@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=4 uid="uid://q48ymuqlusdt"]
+[gd_scene load_steps=15 format=4 uid="uid://q48ymuqlusdt"]
 
 [ext_resource type="Script" uid="uid://brn6icvclska7" path="res://scripts/snek.gd" id="1_7whbc"]
 [ext_resource type="Texture2D" uid="uid://nvii4exbegwh" path="res://models/snek_snek_DefaultMaterial_BaseColor.png" id="2_7whbc"]
 [ext_resource type="Texture2D" uid="uid://bfchdaal8ikej" path="res://models/snek_snek_DefaultMaterial_Emissive.png" id="3_nf5rb"]
 [ext_resource type="Texture2D" uid="uid://djp670v3242de" path="res://models/snek_snek_DefaultMaterial_Metallic-snek_DefaultMaterial_Roughness.png" id="4_4ukqc"]
 [ext_resource type="Texture2D" uid="uid://b804cfrms7up1" path="res://models/snek_snek_DefaultMaterial_Normal.png" id="5_0spil"]
+[ext_resource type="Script" uid="uid://b8dxtwco4dgqw" path="res://scripts/enemy_audio.gd" id="6_4ukqc"]
+[ext_resource type="AudioStream" uid="uid://hideolqtllee" path="res://audio/NPC/NPC Movement/Snake/snake 2.wav" id="7_0spil"]
 
 [sub_resource type="Animation" id="Animation_vmldv"]
 resource_name = "WalkCow_Loop"
@@ -316,3 +318,16 @@ shape = SubResource("CapsuleShape3D_6j430")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, -0.499506, 0.0222281, 0, -0.0222281, -0.499506, -0.180399, -0.56849, -0.663754)
 shape = SubResource("BoxShape3D_6j430")
+
+[node name="AudioPlayers" type="Node3D" parent="." node_paths=PackedStringArray("enemy", "footsteps_player", "fx_player")]
+script = ExtResource("6_4ukqc")
+enemy = NodePath("..")
+footsteps_player = NodePath("Footsteps")
+fx_player = NodePath("Efects")
+caught_sfx = ExtResource("7_0spil")
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+volume_db = -15.0
+
+[node name="Efects" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+volume_db = -10.0

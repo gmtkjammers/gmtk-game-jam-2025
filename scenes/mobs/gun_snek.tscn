@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b0taufpgnxtkm"]
+[gd_scene load_steps=21 format=4 uid="uid://b0taufpgnxtkm"]
 
 [ext_resource type="Texture2D" uid="uid://bci68mwko01dc" path="res://models/SnekDeluxe_snek_DefaultMaterial_BaseColor.png" id="1_008b8"]
 [ext_resource type="Script" uid="uid://b3rm8dh6586il" path="res://scenes/mobs/gun_snek.gd" id="1_vaf63"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dhchcgfcksip3" path="res://models/SnekDeluxe_Chickgun_Chickgun_Emissive.png" id="6_mldxi"]
 [ext_resource type="Texture2D" uid="uid://5wfc54d3rvla" path="res://models/SnekDeluxe_Chickgun_Chickgun_Metallic-Chickgun_Chickgun_Roughness.png" id="7_akdpn"]
 [ext_resource type="Texture2D" uid="uid://ct01u6q4gbhia" path="res://models/SnekDeluxe_Chickgun_Chickgun_Normal.png" id="8_ksq50"]
+[ext_resource type="Script" uid="uid://b8dxtwco4dgqw" path="res://scripts/enemy_audio.gd" id="10_x41go"]
+[ext_resource type="AudioStream" uid="uid://hideolqtllee" path="res://audio/NPC/NPC Movement/Snake/snake 2.wav" id="11_mldxi"]
+[ext_resource type="AudioStream" uid="uid://ckfyc0vhdoebw" path="res://audio/NPC/NPC Attack and hurt/Gun/gun_3.wav" id="12_akdpn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02ou6"]
 resource_name = "Material.001"
@@ -355,3 +358,17 @@ shape = SubResource("CylinderShape3D_4176x")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.000913352, -0.0276503, -0.499234, 0.0275471, -0.498473, 0.0276586, -0.49924, -0.0275554, 0.000612808, 0.276934, 0.165453, 0.0229387)
 shape = SubResource("CylinderShape3D_4176x")
+
+[node name="AudioPlayers" type="Node3D" parent="." node_paths=PackedStringArray("enemy", "footsteps_player", "fx_player")]
+script = ExtResource("10_x41go")
+enemy = NodePath("..")
+footsteps_player = NodePath("Footsteps")
+fx_player = NodePath("Efects")
+caught_sfx = ExtResource("11_mldxi")
+gun_sfx = ExtResource("12_akdpn")
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+volume_db = -15.0
+
+[node name="Efects" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+volume_db = -10.0
