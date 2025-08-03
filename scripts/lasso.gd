@@ -12,6 +12,7 @@ var catch_target = null
 var catch_offset = null
 var lasso_charge : float = 0
 var lasso_size : float = 1
+var catch_scene = preload("res://scenes/caught_message.tscn")
 @export var player: CharacterBody3D
 @export var GRAVITY = 6
 @export var lasso_scale = 1.0
@@ -83,6 +84,10 @@ func _resolve_catch(_catch_target : Node3D):
 		player.add_hat()
 	if "horse" in _catch_target and _catch_target.horse:
 		player.add_horse()
+	var msg = catch_scene.instantiate()
+	msg.set_camera(player.camera)
+	player.add_child(msg)
+	msg.display(_catch_target.NAME + " catch!")
 	_catch_target.catch_effect().call(player)
 	_catch_target.queue_free()
 	
