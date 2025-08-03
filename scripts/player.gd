@@ -30,6 +30,9 @@ var can_take_damage = true
 var can_move = true
 
 signal player_died
+signal took_damage
+signal got_horse
+signal got_hat
 
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -99,6 +102,7 @@ func _physics_process(delta: float) -> void:
 
 func add_hat():
 	head_point = add_cosmetic(hat_scene, head_point, hats).get_node("head_pin")
+	got_hat.emit()
 	
 
 func add_horse():
@@ -116,6 +120,8 @@ func add_horse():
 	seat_point = new_horse.get_node("seat_pin")
 	horses.append(new_horse)
 	speed += 5
+
+	got_horse.emit()
 
 
 func add_cosmetic(scene , point, list):
@@ -141,6 +147,8 @@ func take_damage():
 	if not can_take_damage:
 		print("bullet hit but player is invul")
 		return
+
+	took_damage.emit()
 
 	if hats.size() == 0:
 		player_died.emit()

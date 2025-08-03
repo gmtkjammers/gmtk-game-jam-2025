@@ -1,12 +1,17 @@
-[gd_scene load_steps=24 format=4 uid="uid://dgclupbf47ipo"]
+[gd_scene load_steps=29 format=4 uid="uid://dgclupbf47ipo"]
 
 [ext_resource type="Script" uid="uid://cpyj20jsrvttf" path="res://scripts/player.gd" id="1_3li8b"]
 [ext_resource type="Script" uid="uid://d3252182yc7fs" path="res://scripts/lasso.gd" id="3_3li8b"]
 [ext_resource type="Texture2D" uid="uid://dbisuknq4gr3j" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_BaseColor.png" id="3_khinc"]
 [ext_resource type="Texture2D" uid="uid://cpi0j74d3atx8" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Emissive.png" id="4_bruh7"]
 [ext_resource type="Texture2D" uid="uid://doxx1gxhbflc2" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Metallic-Mooboy_DefaultMaterial_Roughness.png" id="5_6eyey"]
+[ext_resource type="Script" uid="uid://dxexvbpwi8fhh" path="res://scripts/player_audio.gd" id="6_bruh7"]
 [ext_resource type="Texture2D" uid="uid://to45v4abu0nv" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Normal.png" id="6_d3wef"]
+[ext_resource type="AudioStream" uid="uid://bqblhrsoc6mon" path="res://audio/Player/Footsteps/Footstep_loop.wav" id="6_khinc"]
 [ext_resource type="Material" uid="uid://d1igneb08t2e8" path="res://textures/rope.tres" id="7_khinc"]
+[ext_resource type="AudioStream" uid="uid://dehfrptf3l1ml" path="res://audio/Player/PowerUps/Power_up_hat_gain.wav" id="7_o4126"]
+[ext_resource type="AudioStream" uid="uid://coxtu6lfm2xq5" path="res://audio/Player/PowerUps/Power_up_hat_loss.wav" id="8_lkdrv"]
+[ext_resource type="AudioStream" uid="uid://kvkakssoh7g7" path="res://audio/Player/PowerUps/Power_up_faster_horse.wav" id="9_p7iby"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khinc"]
 radius = 0.921077
@@ -690,6 +695,24 @@ one_shot = true
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.573115, 0)
 shape = SubResource("CapsuleShape3D_cw2d6")
+
+[node name="AudioPlayers" type="Node3D" parent="PlayerBody" node_paths=PackedStringArray("footsteps_player", "effects_player", "player_body")]
+script = ExtResource("6_bruh7")
+footsteps_player = NodePath("FootstepsPlayer")
+effects_player = NodePath("EffectsPlayer")
+player_body = NodePath("..")
+get_hat_sfx = ExtResource("7_o4126")
+lose_hat_sfx = ExtResource("8_lkdrv")
+get_horse_sfx = ExtResource("9_p7iby")
+
+[node name="FootstepsPlayer" type="AudioStreamPlayer3D" parent="PlayerBody/AudioPlayers"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.28164, 0)
+stream = ExtResource("6_khinc")
+volume_db = -16.833
+
+[node name="EffectsPlayer" type="AudioStreamPlayer3D" parent="PlayerBody/AudioPlayers"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.28164, 0)
+volume_db = -15.118
 
 [node name="Lasso" type="RigidBody3D" parent="." node_paths=PackedStringArray("player")]
 collision_layer = 4194308
