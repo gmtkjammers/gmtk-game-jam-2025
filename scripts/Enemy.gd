@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var speed = 5
+@export var speed = 3
 @export var turn_speed : float = 5
 @export var max_move_offset = 5
 @export var player_detection_range = 5

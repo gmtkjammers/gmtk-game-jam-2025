@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://b0taufpgnxtkm"]
+[gd_scene load_steps=18 format=4 uid="uid://b0taufpgnxtkm"]
 
 [ext_resource type="Texture2D" uid="uid://bci68mwko01dc" path="res://models/SnekDeluxe_snek_DefaultMaterial_BaseColor.png" id="1_008b8"]
+[ext_resource type="Script" uid="uid://b3rm8dh6586il" path="res://scenes/mobs/gun_snek.gd" id="1_vaf63"]
 [ext_resource type="Texture2D" uid="uid://g4squeg1rcyh" path="res://models/SnekDeluxe_snek_DefaultMaterial_Emissive.png" id="2_vaf63"]
 [ext_resource type="Texture2D" uid="uid://bkffaloe4384u" path="res://models/SnekDeluxe_snek_DefaultMaterial_Metallic-snek_DefaultMaterial_Roughness.png" id="3_h7cq3"]
 [ext_resource type="Texture2D" uid="uid://bcmk4l1s5rsre" path="res://models/SnekDeluxe_snek_DefaultMaterial_Normal.png" id="4_df0n5"]
@@ -211,6 +212,8 @@ height = 0.582153
 radius = 0.0610352
 
 [node name="snek" type="CharacterBody3D"]
+script = ExtResource("1_vaf63")
+size_bonus = 0.2
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

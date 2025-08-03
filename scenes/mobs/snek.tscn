@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://n1jr3cobatum"]
+[gd_scene load_steps=13 format=4 uid="uid://n1jr3cobatum"]
 
 [ext_resource type="Script" uid="uid://brn6icvclska7" path="res://scripts/snek.gd" id="1_y5nmw"]
 [ext_resource type="Texture2D" uid="uid://nvii4exbegwh" path="res://models/snek_snek_DefaultMaterial_BaseColor.png" id="2_8kuo5"]
@@ -170,22 +170,27 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bf5y0"]
-height = 0.582153
+height = 1.25247
 radius = 0.0610352
 
-[node name="snek" type="CharacterBody3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8kuo5"]
+radius = 0.0586901
+height = 0.825751
+
+[node name="snek" type="CharacterBody3D" groups=["catchable"]]
 collision_layer = 6
 collision_mask = 5
 script = ExtResource("1_y5nmw")
+size_bonus = 0.2
 
 [node name="Pivot" type="Node3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="head_pin" type="Node3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21064, 1.34808, 0.46534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46446, 1.57348, 0.46534)
 
 [node name="Armature" type="Node3D" parent="Pivot"]
-transform = Transform3D(0.984739, 0.174038, 0, -0.174038, 0.984739, 0, 0, 0, 1, 1.32627, 0.0957102, 0)
+transform = Transform3D(0.984739, 0.174038, 0, -0.174038, 0.984739, 0, 0, 0, 1, 1.32627, 0.28941, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Pivot/Armature"]
 bones/0/name = "Bone"
@@ -298,7 +303,7 @@ bones/14/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_6odvd")
 skin = SubResource("Skin_3d8sw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot" groups=["catchable"]]
 libraries = {
 &"": SubResource("AnimationLibrary_hebwq")
 }
@@ -308,9 +313,9 @@ autoplay = "Slither"
 navigation_layers = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.0275623, 0.499116, -0.0110999, 0, -0.0111168, -0.499876, -0.49924, -0.0275554, 0.000612808, -0.00996904, 0.0429949, 0.0161693)
+transform = Transform3D(-0.0551245, 0.998233, -0.022199, -1.94365e-09, -0.0222328, -0.999753, -0.998479, -0.0551108, 0.00122557, -0.0690761, 0.0833963, 0.0194325)
 shape = SubResource("CylinderShape3D_bf5y0")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.000913352, -0.0276503, -0.499234, 0.0275471, -0.498473, 0.0276586, -0.49924, -0.0275554, 0.000612808, 0.276934, 0.165453, 0.0229387)
-shape = SubResource("CylinderShape3D_bf5y0")
+transform = Transform3D(0.00182675, -0.0553007, -0.998468, 0.0550942, -0.996948, 0.0553173, -0.998479, -0.0551108, 0.00122557, 0.670938, 0.386608, 0.0229387)
+shape = SubResource("CapsuleShape3D_8kuo5")

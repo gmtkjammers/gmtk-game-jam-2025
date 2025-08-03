@@ -52,3 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7003, 0, -3.65858)
 
 [node name="snek4" parent="." instance=ExtResource("3_5wlom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04569, 0, -10.7921)
+
+[node name="snek5" parent="." instance=ExtResource("3_5wlom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95047, 0, -2.4177)

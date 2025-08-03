@@ -9,7 +9,6 @@ albedo_color = Color(0.719054, 0.236536, 0.291931, 1)
 size = Vector3(1, 1.57312, 2.15869)
 
 [node name="horse" type="CharacterBody3D"]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 collision_layer = 2
 collision_mask = 3
 
@@ -23,4 +22,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74408, 0.131104)
 shape = SubResource("BoxShape3D_eplvg")
 
 [node name="seat_pin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.467072, -0.292704)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.649999, -0.000405312)

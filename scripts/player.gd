@@ -4,7 +4,7 @@ extends CharacterBody3D
 const INITIAL_SIZE : float = 20
 const JUMP_VELOCITY = 0.5
 const CAM_SENSITIVITY = 0.01
-@export var starting_speed = 15.0
+@export var starting_speed = 8.0
 @export var speed_adjust = 1.0
 var head_point : Node3D
 var seat_point : Node3D
@@ -22,6 +22,7 @@ var camera_initial_offset : Vector3 = Vector3(0, 0, 0)
 var zoom_level : float = -4
 var max_zoom : int = 102
 var min_zoom : int = -7
+@onready var animation = $Pivot/AnimationPlayer
 
 @export var hit_timer : Timer
 @export var hit_invul_time: float = 2
@@ -35,7 +36,6 @@ func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	head_point = head_pin
 	seat_point = seat_pin
-	add_hat()
 	add_hat()
 	hit_timer.timeout.connect(on_hit_invul_timeout)
 	camera_initial_offset = camera.global_position
@@ -70,6 +70,12 @@ func _input(event: InputEvent) -> void:
 			# zoom out
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				zoom_mouse(1)
+	if event is InputEventKey:
+		if event.pressed:
+			animation.autoplay = "Walk"
+			animation.play("Walk")
+		if event.is_released():
+			animation.play("Idle")
 func _physics_process(delta: float) -> void:
 	#update scale
 	scale = Vector3(1,1,1) * (size / INITIAL_SIZE)
@@ -84,14 +90,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY * size
 		#add_horse()
-
 	var input_dir := Input.get_vector("move_right", "move_left", "move_backward", "move_forward")
 	var direction := (Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	# var direction = (global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if input_dir != Vector2.ZERO:
+		#animation.autoplay = "Walk"
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
+		#animation.autoplay = "Idle"
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 	move_and_slide()
@@ -99,7 +106,7 @@ func _physics_process(delta: float) -> void:
 
 func add_hat():
 	head_point = add_cosmetic(hat_scene, head_point, hats).get_node("head_pin")
-	
+
 
 func add_horse():
 	print("adding horse, ", head_point.position)
@@ -109,10 +116,11 @@ func add_horse():
 	new_collider.reparent(self)
 	new_collider.global_position = seat_point.global_position - Vector3(0, new_horse.scale.y, 0)
 	new_collider.rotation = Vector3.ZERO
+	new_horse.scale = scale*3
 	print("new horse", new_horse)
 	$Pivot.add_child(new_horse)
 	new_horse.global_position = seat_point.global_position - Vector3(0, new_horse.scale.y, 0)
-	position += Vector3(0, new_horse.scale.y, 0)
+	position += Vector3(0, new_horse.scale.y*2, 0)
 	seat_point = new_horse.get_node("seat_pin")
 	horses.append(new_horse)
 	speed += 5
@@ -122,6 +130,7 @@ func add_cosmetic(scene , point, list):
 	print("adding cosmetic", scene, point)
 	var new_cosmetic: Node3D = scene.instantiate()
 	$Pivot.add_child(new_cosmetic)
+	new_cosmetic.scale = scale*2
 	new_cosmetic.global_position = point.global_position
 	new_cosmetic.global_rotation = point.global_rotation
 	list.append(new_cosmetic)
@@ -143,9 +152,11 @@ func take_damage():
 		return
 
 	if hats.size() == 0:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		player_died.emit()
 		can_take_damage = false
 		can_move = false
+
 
 	if hats.size() > 0:
 		remove_hat()

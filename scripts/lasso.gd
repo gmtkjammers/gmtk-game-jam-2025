@@ -2,7 +2,7 @@ extends RigidBody3D
 
 
 const ROTATION_SPEED = 3
-const THROW_SPEED = 20
+const THROW_SPEED = 15
 const MAX_POWER = 1.5
 const LASSO_VERTICAL_OFFSET = 2
 enum Lasso_State {OVERHEAD, THROWING, RETURNING}
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
+	scale = Vector3(lasso_scale*lasso_size, lasso_scale*lasso_size, lasso_scale*lasso_size)
 	if state == Lasso_State.OVERHEAD:
 		# Just rotate around
 		position.x = player.position.x
@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 		#check if mouse is being held down
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			lasso_charge += delta
+			player.animation.play("Lasso")
 	
 	if state == Lasso_State.THROWING and not get_colliding_bodies().is_empty():
 		checkCatches(get_colliding_bodies())
