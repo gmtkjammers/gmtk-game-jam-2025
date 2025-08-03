@@ -1,18 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://btdostxe2bdp2"]
+[gd_scene load_steps=16 format=3 uid="uid://btdostxe2bdp2"]
 
 [ext_resource type="PackedScene" uid="uid://dgclupbf47ipo" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cap4ktjhk8qt2" path="res://textures/Mat_Clay_Tan_01-512x512.png" id="2_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://hwr38x5b8dcl" path="res://textures/sky/sky_36_2k.png" id="2_tipki"]
-[ext_resource type="PackedScene" uid="uid://b0jf3witt1wwx" path="res://scenes/mobs/cow.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://1wgfitj0m7dp" path="res://scenes/regions/chicken_run.tscn" id="3_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://doihdnv553ph8" path="res://scenes/regions/cattle_range.tscn" id="4_85g3d"]
 [ext_resource type="PackedScene" uid="uid://en6h4aqtkqfi" path="res://scenes/regions/desert.tscn" id="4_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b2ebna42an117" path="res://scenes/UI/game_over_ui.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://dv3c0ja1wrlan" path="res://scenes/mobs/chicken.tscn" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://d2gw4rfep4662" path="res://scenes/regions/farmyard.tscn" id="5_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://c7ha6erlvcb0a" path="res://scenes/env/cactus.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://dd4mf77wv0aj5" path="res://scenes/mobs/monkey.tscn" id="9_85g3d"]
-[ext_resource type="PackedScene" uid="uid://n1jr3cobatum" path="res://scenes/mobs/snek.tscn" id="12_eb6dy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tipki"]
 panorama = ExtResource("2_tipki")
@@ -51,58 +46,20 @@ shadow_enabled = true
 [node name="GameOverUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_jyhfs")]
 player = NodePath("../Player/PlayerBody")
 
-[node name="chicken" parent="." instance=ExtResource("5_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.269453, 0, 3.66005)
-hat = true
-
-[node name="cow2" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4798, 1.5572, 0)
-hat = true
-
-[node name="cow4" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1503, 0.880912, -23.0013)
-
-[node name="cow5" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5294, 0.880912, -29.038)
-
-[node name="cow6" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.6138, 0.880912, -19.99)
-
-[node name="cactus" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.663, 0, 0)
-
-[node name="cactus2" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9382, 0.878362, 16.6094)
-
-[node name="cactus3" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4971, 0.878362, 5.3591)
-
-[node name="cactus4" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7732, 0.878362, 22.9271)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_choun")
 
 [node name="Cattle Range" parent="." instance=ExtResource("4_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.38472, 0.576425, -127.62)
-
-[node name="chicken2" parent="." instance=ExtResource("5_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.38496, 0.240183, 7.54582)
-
-[node name="chicken3" parent="." instance=ExtResource("5_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81652, 0.240184, 6.59166)
-
-[node name="chicken4" parent="." instance=ExtResource("5_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56382, 0.240183, -3.72603)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.38472, 0.576425, -173.503)
 
 [node name="chicken run" parent="." instance=ExtResource("3_ya4ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6726, 0.010876, 72.7309)
 
 [node name="chicken run2" parent="." instance=ExtResource("3_ya4ey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.158, 0.010876, -9.65242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8219, 0.0108836, -9.65242)
 
 [node name="desert" parent="." instance=ExtResource("4_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76812, 0.910872, -26.1119)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76812, 0.910872, -77.5595)
 
 [node name="desert2" parent="." instance=ExtResource("4_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.816, 0.910872, -76.3878)
@@ -148,20 +105,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 238.61
 shape = SubResource("BoxShape3D_tefeu")
 
 [node name="farmyard" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.6817, 0, -89.3174)
 
 [node name="farmyard2" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.1503, 0, 25.1915)
-
-[node name="cow" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82488, 0.132424, 0)
-
-[node name="snek" parent="." instance=ExtResource("12_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88805, 0.132424, 0)
-
-[node name="monkey" parent="." instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93076, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68007, 7.62939e-06, -5.9741)
 
 [node name="Cattle Range2" parent="." instance=ExtResource("4_85g3d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.745, 0.576448, 123.97)
-
-[editable path="Player"]

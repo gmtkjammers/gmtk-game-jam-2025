@@ -782,11 +782,11 @@ _data = {
 radius = 0.238075
 height = 2.33153
 
-[node name="monkey" type="CharacterBody3D" groups=["catchable"]]
+[node name="monkey" type="CharacterBody3D" node_paths=PackedStringArray("bulletSpawn") groups=["catchable"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_to385")
-horse_height_offset = -0.5
+bulletSpawn = NodePath("BulletSpawn")
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -797,7 +797,7 @@ transform = Transform3D(1, 0, 0, 0, 0.98989, 0.141834, 0, -0.141834, 0.98989, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7833, 0)
 
 [node name="Armature" type="Node3D" parent="Pivot"]
-transform = Transform3D(0, 0, 0.891429, 0, 0.891429, 0, -0.891429, 0, 0, -0.107085, 1.1553, 0.10662)
+transform = Transform3D(-0.0957014, 0, -0.886277, 0, 0.891429, 0, 0.886277, 0, -0.0957014, -0.107085, 1.1553, 0.10662)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Pivot/Armature"]
 transform = Transform3D(-0.999799, 0, 0.020035, 0, 1, 0, -0.020035, 0, -0.999799, 0, 0, 0)
@@ -1116,7 +1116,7 @@ autoplay = "Walk"
 speed_scale = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0307738, 1.16309, 0.145185)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0307738, 1.16309, -0.128452)
 shape = SubResource("CapsuleShape3D_v7a43")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
