@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://biu2ja0moigx8"
+path="res://.godot/imported/Monkey_screech_3.wav-905761ecf665fb014739898c69870860.sample"
+
+[deps]
+
+source_file="res://audio/NPC/NPC Dialogue/Monkey Screeches/Monkey_screech_3.wav"
+dest_files=["res://.godot/imported/Monkey_screech_3.wav-905761ecf665fb014739898c69870860.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

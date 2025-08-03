@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ovfwo10dddcv"
+path="res://.godot/imported/chicken_feet_5.wav-b72faf0fc95c56b93c3fd76ca1fbe9fe.sample"
+
+[deps]
+
+source_file="res://audio/NPC/NPC Movement/Chicken/chicken_feet_5.wav"
+dest_files=["res://.godot/imported/chicken_feet_5.wav-b72faf0fc95c56b93c3fd76ca1fbe9fe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

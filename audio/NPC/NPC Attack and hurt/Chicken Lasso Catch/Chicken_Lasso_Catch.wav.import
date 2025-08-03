@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://02d2ye0btc7r"
+path="res://.godot/imported/Chicken_Lasso_Catch.wav-24fbbd399257540cbcc807859c909700.sample"
+
+[deps]
+
+source_file="res://audio/NPC/NPC Attack and hurt/Chicken Lasso Catch/Chicken_Lasso_Catch.wav"
+dest_files=["res://.godot/imported/Chicken_Lasso_Catch.wav-24fbbd399257540cbcc807859c909700.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

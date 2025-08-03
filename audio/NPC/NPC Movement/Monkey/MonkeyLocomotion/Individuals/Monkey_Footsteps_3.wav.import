@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clngugtvf2dhc"
+path="res://.godot/imported/Monkey_Footsteps_3.wav-e9b90b53f7a7362f79f8d640b23e2ba5.sample"
+
+[deps]
+
+source_file="res://audio/NPC/NPC Movement/Monkey/MonkeyLocomotion/Individuals/Monkey_Footsteps_3.wav"
+dest_files=["res://.godot/imported/Monkey_Footsteps_3.wav-e9b90b53f7a7362f79f8d640b23e2ba5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

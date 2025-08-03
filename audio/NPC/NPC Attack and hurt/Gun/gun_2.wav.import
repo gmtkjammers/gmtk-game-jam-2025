@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2sf7mukaidul"
+path="res://.godot/imported/gun_2.wav-2e98368daa90246c463f4e1c4bceefae.sample"
+
+[deps]
+
+source_file="res://audio/NPC/NPC Attack and hurt/Gun/gun_2.wav"
+dest_files=["res://.godot/imported/gun_2.wav-2e98368daa90246c463f4e1c4bceefae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
