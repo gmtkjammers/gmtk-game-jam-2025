@@ -84,7 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7732, 0.878362, 22.9271)
 environment = SubResource("Environment_choun")
 
 [node name="Cattle Range" parent="." instance=ExtResource("4_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.38472, 0.576425, -182.151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.38472, 0.576425, -127.62)
 
 [node name="chicken2" parent="." instance=ExtResource("5_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.38496, 0.240183, 7.54582)
@@ -94,6 +94,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81652, 0.240184, 6.59166)
 
 [node name="chicken4" parent="." instance=ExtResource("5_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56382, 0.240183, -3.72603)
+
+[node name="chicken run" parent="." instance=ExtResource("3_ya4ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6726, 0.010876, 72.7309)
+
+[node name="chicken run2" parent="." instance=ExtResource("3_ya4ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.158, 0.010876, -9.65242)
+
+[node name="desert" parent="." instance=ExtResource("4_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76812, 0.910872, -26.1119)
+
+[node name="desert2" parent="." instance=ExtResource("4_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.816, 0.910872, -76.3878)
+
+[node name="desert3" parent="." instance=ExtResource("4_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.1411, 0.910872, -8.27609)
+
+[node name="desert4" parent="." instance=ExtResource("4_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.6739, 0.910872, 85.6407)
+
+[node name="desert5" parent="." instance=ExtResource("4_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.68, 0.910872, -100.938)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625108, 0)
@@ -122,35 +143,14 @@ shape = SubResource("BoxShape3D_tefeu")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -248.437, 4.31137, 0.0217896)
 shape = SubResource("BoxShape3D_tefeu")
 
-[node name="wall3" type="CollisionShape3D" parent="Ground/wall3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0986846, 4.31137, 487.055)
+[node name="wall4" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 238.618, 8.62274, 0.120453)
 shape = SubResource("BoxShape3D_tefeu")
-
-[node name="chicken run" parent="Ground" instance=ExtResource("3_ya4ey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.094, 0.635984, 72.7309)
-
-[node name="chicken run2" parent="Ground" instance=ExtResource("3_ya4ey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.983, 0.635984, 59.2993)
-
-[node name="desert" parent="Ground" instance=ExtResource("4_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2434, 1.53598, -53.0871)
-
-[node name="desert2" parent="Ground" instance=ExtResource("4_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.816, 1.53598, -103.684)
-
-[node name="desert3" parent="Ground" instance=ExtResource("4_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.1411, 1.53598, 129.271)
-
-[node name="desert4" parent="Ground" instance=ExtResource("4_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.6739, 1.53598, 85.6407)
-
-[node name="desert5" parent="Ground" instance=ExtResource("4_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.68, 1.53598, -100.938)
 
 [node name="farmyard" parent="." instance=ExtResource("5_tbgi4")]
 
 [node name="farmyard2" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7954, 0, -25.887)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.1503, 0, 25.1915)
 
 [node name="cow" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82488, 0.132424, 0)
@@ -162,6 +162,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88805, 0.132424, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.93076, 0, 0)
 
 [node name="Cattle Range2" parent="." instance=ExtResource("4_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.875, 0.576448, 148.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.745, 0.576448, 123.97)
 
 [editable path="Player"]
