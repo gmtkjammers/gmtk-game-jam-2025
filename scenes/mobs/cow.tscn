@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://xabw77avbfs1" path="res://models/Cow_Cow_Cow_Emissive.png" id="3_hh455"]
 [ext_resource type="Texture2D" uid="uid://dotslhh8xywe5" path="res://models/Cow_Cow_Cow_Metallic-Cow_Cow_Roughness.png" id="4_8skmv"]
 [ext_resource type="Texture2D" uid="uid://bcmiq6liq8mqa" path="res://models/Cow_Cow_Cow_Normal.png" id="5_xabja"]
-[ext_resource type="Script" path="res://scripts/enemy_audio.gd" id="6_56abp"]
+[ext_resource type="Script" uid="uid://b8dxtwco4dgqw" path="res://scripts/enemy_audio.gd" id="6_56abp"]
 [ext_resource type="AudioStream" uid="uid://3uixdqcg156d" path="res://audio/NPC/NPC Movement/Monkey/MonkeyLocomotion/Monkey_Footstep_Loop.wav" id="7_6wvap"]
 [ext_resource type="AudioStream" uid="uid://de5bo2bk5po46" path="res://audio/NPC/NPC Attack and hurt/Cow Lasso Catch/Cow_Lasso_Catch.wav" id="8_y03j1"]
 
@@ -427,7 +427,7 @@ footsteps_sfx = ExtResource("7_6wvap")
 caught_sfx = ExtResource("8_y03j1")
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="AudioPlayers"]
-volume_db = -16.0
+volume_db = -80.0
 
 [node name="Effects" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 volume_db = -10.0

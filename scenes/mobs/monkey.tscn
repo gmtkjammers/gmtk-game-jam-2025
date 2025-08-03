@@ -1142,7 +1142,7 @@ caught_sfx = ExtResource("16_sn4ou")
 gun_sfx = ExtResource("17_g0iq7")
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="AudioPlayers"]
-volume_db = -15.0
+volume_db = -24.0
 
 [node name="Effects" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 volume_db = -10.0

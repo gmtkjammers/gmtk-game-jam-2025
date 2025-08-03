@@ -222,7 +222,7 @@ footsteps_sfx = ExtResource("6_1dn3q")
 caught_sfx = ExtResource("7_1dn3q")
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="AudioPlayers"]
-volume_db = -15.0
+volume_db = -80.0
 
 [node name="Effects" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 volume_db = -7.0

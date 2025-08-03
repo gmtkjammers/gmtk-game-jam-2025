@@ -38,6 +38,8 @@ signal took_damage
 signal increased_size
 signal increased_lasso
 
+var is_moving
+
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	head_point = head_pin
@@ -78,9 +80,11 @@ func _input(event: InputEvent) -> void:
 				zoom_mouse(1)
 	if event is InputEventKey:
 		if event.pressed:
+			is_moving = true
 			animation.autoplay = "Walk"
 			animation.play("Walk")
 		if event.is_released():
+			is_moving = false
 			animation.play("Idle")
 func _physics_process(delta: float) -> void:
 	#update scale

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dbisuknq4gr3j" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_BaseColor.png" id="3_khinc"]
 [ext_resource type="Texture2D" uid="uid://cpi0j74d3atx8" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Emissive.png" id="4_bruh7"]
 [ext_resource type="Texture2D" uid="uid://doxx1gxhbflc2" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Metallic-Mooboy_DefaultMaterial_Roughness.png" id="5_6eyey"]
-[ext_resource type="Script" path="res://scripts/player_audio.gd" id="6_bruh7"]
+[ext_resource type="Script" uid="uid://dxexvbpwi8fhh" path="res://scripts/player_audio.gd" id="6_bruh7"]
 [ext_resource type="Texture2D" uid="uid://to45v4abu0nv" path="res://models/Mooboy(2)_Mooboy_DefaultMaterial_Normal.png" id="6_d3wef"]
 [ext_resource type="Material" uid="uid://d1igneb08t2e8" path="res://textures/rope.tres" id="7_khinc"]
 [ext_resource type="AudioStream" uid="uid://dehfrptf3l1ml" path="res://audio/Player/PowerUps/Power_up_hat_gain.wav" id="7_o4126"]
@@ -709,7 +709,7 @@ increase_lasso_sfx = ExtResource("7_o4126")
 
 [node name="FootstepsPlayer" type="AudioStreamPlayer3D" parent="PlayerBody/AudioPlayers"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.28164, 0)
-volume_db = -16.833
+volume_db = -26.0
 
 [node name="EffectsPlayer" type="AudioStreamPlayer3D" parent="PlayerBody/AudioPlayers"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.28164, 0)

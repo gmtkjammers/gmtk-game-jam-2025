@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.671, 0.5, 0)
 collision_mask = 3
 
 [node name="cow" parent="." instance=ExtResource("3_o0kvk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31607, 0, 4.03262)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31607, 0.810658, 4.03262)
 
 [node name="chicken" parent="." instance=ExtResource("4_20ing")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59924, 0.261438, 6.38326)
