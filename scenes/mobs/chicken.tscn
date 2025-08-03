@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=4 uid="uid://dv3c0ja1wrlan"]
+[gd_scene load_steps=15 format=4 uid="uid://dv3c0ja1wrlan"]
 
 [ext_resource type="Texture2D" uid="uid://bqocpnx2yy3qd" path="res://models/Chicken_Chicken_Chicken_BaseColor.png" id="1_htrmy"]
 [ext_resource type="Script" uid="uid://bvboy738ll8eg" path="res://scripts/chicken.gd" id="1_mmdb0"]
 [ext_resource type="Texture2D" uid="uid://c3ryskmpb2l0h" path="res://models/Chicken_Chicken_Chicken_Emissive.png" id="2_mmdb0"]
 [ext_resource type="Texture2D" uid="uid://b36i3hmxfv0m7" path="res://models/Chicken_Chicken_Chicken_Metallic-Chicken_Chicken_Roughness.png" id="3_14825"]
-[ext_resource type="Script" path="res://scripts/enemy_audio.gd" id="5_mvc3a"]
+[ext_resource type="Script" uid="uid://b8dxtwco4dgqw" path="res://scripts/enemy_audio.gd" id="5_mvc3a"]
 [ext_resource type="AudioStream" uid="uid://ovfwo10dddcv" path="res://audio/NPC/NPC Movement/Chicken/chicken_feet_5.wav" id="6_1dn3q"]
+[ext_resource type="AudioStream" uid="uid://02d2ye0btc7r" path="res://audio/NPC/NPC Attack and hurt/Chicken Lasso Catch/Chicken_Lasso_Catch.wav" id="7_1dn3q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jswu8"]
 resource_name = "Material.001"
@@ -218,10 +219,10 @@ enemy = NodePath("..")
 footsteps_player = NodePath("Footsteps")
 fx_player = NodePath("Effects")
 footsteps_sfx = ExtResource("6_1dn3q")
-caught_sfx = ExtResource("6_1dn3q")
+caught_sfx = ExtResource("7_1dn3q")
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 volume_db = -15.0
 
 [node name="Effects" type="AudioStreamPlayer3D" parent="AudioPlayers"]
-volume_db = -10.0
+volume_db = -7.0
